@@ -329,7 +329,15 @@ document.addEventListener('keydown', Markup());
 
 
     for(let key of Array.prototype) {
-
+        Object.defineProperty(Array.prototype, key, {
+            enumerable: false
+        })
+    }
+    
+    for(let key of Object.prototype) {
+        Object.defineProperty(Object.prototype, key, {
+            enumerable: false
+        })
     }
 
 }).call(this);
