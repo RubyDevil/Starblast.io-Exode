@@ -5,7 +5,7 @@ const defined = (val) => (typeof val === 'undefined');
 var $ = window.jQuery;
 
 // default
-const Exode = 'Exode';
+var Exode = 'Exode';
 var ExodeEditor = {
     custom_background: "http://backgroundlabs.com/files/dark-canvas-background-2353.png", // dark-grey patern
 }
@@ -27,6 +27,7 @@ function customEditor() {
         }
     }
 }
+if( defined(Editor) ) customEditor();
 
 // Exode Variable Module ——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 function Markup() {
