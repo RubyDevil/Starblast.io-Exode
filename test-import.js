@@ -3,11 +3,11 @@
 var $ = window.jQuery;
 
 // default
-var default = 'default';
+var auto = 'auto';
 
 // cursor
 $('.ace_scroller').css('cursor', 'context-menu');
 
-if(typeof custom_background !== default) {
+if(typeof custom_background !== auto) {
     $('.insiderenderpanel').css('background', `url("${custom_background}")`)
 }
