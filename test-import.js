@@ -28,8 +28,7 @@ function customEditor() {
     }
 }
 
-document.addEventListener('keydown', markup);
-
+// Exode Variable Module ——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 const markup = () => {
     let identifiers = $('span.ace_identifier');
     for(let identifier of identifiers) {
@@ -39,7 +38,8 @@ const markup = () => {
         break;
     }
 }
-
+document.addEventListener('keydown', markup);
+// ————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 
 
