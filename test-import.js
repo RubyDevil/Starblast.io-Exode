@@ -2,6 +2,12 @@
 
 var $ = window.jQuery;
 
-if(typeof custom_background !== 'undefined') {
+// default
+var default = 'default';
+
+// cursor
+$('.ace_scroller').css('cursor', 'context-menu');
+
+if(typeof custom_background !== default) {
     $('.insiderenderpanel').css('background', `url("${custom_background}")`)
 }
