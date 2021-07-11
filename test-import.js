@@ -29,7 +29,7 @@ function customEditor() {
 }
 
 // Exode Variable Module ——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-const markup = () => {
+function Markup() {
     let identifiers = $('span.ace_identifier');
     for(let identifier of identifiers) {
         if( identifier.innerHTML !== Exode ) continue;
@@ -38,7 +38,7 @@ const markup = () => {
         break;
     }
 }
-document.addEventListener('keydown', markup);
+document.addEventListener('keydown', Markup());
 // ————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 
