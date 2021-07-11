@@ -12,9 +12,9 @@ var ExodeEditor = {
 
 // style class
 $('.exode-var').css({
-    'font-style': 'italic !important';
-    'font-weight': 'bold !important';
-    'color': 'gold !important';
+    'font-style': 'italic !important',
+    'font-weight': 'bold !important',
+    'color': 'gold !important',
 })
 
 function customEditor() {
