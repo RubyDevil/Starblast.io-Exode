@@ -33,7 +33,7 @@ function Markup() {
     let identifiers = $('span.ace_identifier');
     for(let identifier of identifiers) {
         if( identifier.innerHTML !== Exode ) continue;
-        else if( identifier.hasClass('exode-var') ) continue;
+        else if( $(identifier).hasClass('exode-var') ) continue;
         identifier.attr('class', 'exode-var');
         break;
     }
