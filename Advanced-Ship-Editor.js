@@ -34,7 +34,7 @@ function Markup() {
     for(let identifier of identifiers) {
         if( identifier.innerHTML !== Exode ) continue;
         else if( identifier.classList.contains('exode-var') ) continue;
-        identifier.attr('class', 'exode-var');
+        identifier.setAttribute('class', 'exode-var');
         break;
     }
 }
