@@ -16,15 +16,13 @@ var ExodeEditor = {
 // Custom Editor Module ——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 if( typeof Editor !== 'undefined' ) {
-        switch (true) {
-            case defined(Editor.custom_background): {
-                switch (Editor.custom_background) {
-                    case Exode: $('#insiderenderpanel > canvas').css('background', `url("${ExodeEditor.custom_background}") !important`); break;
-                    default: $('#insiderenderpanel > canvas').css('background', `url("${Editor.custom_background}") !important`); break;
-                }
-            }
-        }
-    }
+    console.log("Updating Background")
+    defined(Editor.custom_background) ? 
+        switch (Editor.custom_background) {
+            case Exode: $('.insiderenderpanel').css('background', `url("${ExodeEditor.custom_background}") !important`); break;
+            default: $('.insiderenderpanel').css('background', `url("${Editor.custom_background}") !important`); break;
+        } : $('.insiderenderpanel').css('background', `url("${Editor.custom_background}") !important`);
+}
 
 // ————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -34,13 +32,25 @@ if( typeof Editor !== 'undefined' ) {
 
     // style class
     if( ! installed ) {
-        $(`<style id="exode-style-class">
-        .exode-var {
-            font-style: italic !important;
-            font-weight: bold !important;
-            color: gold !important;
+        function overrideStyle(css) {
+            var head, style;
+            head = document.getElementsByTagName('head')[0];
+            if (!head) { return; }
+            style = document.createElement('style');
+            style.type = 'text/css';
+            style.innerHTML = css.replace(/;/g, ' !important;');
+            head.appendChild(style);
         }
-        </style>`).appendTo('body');
+        overrideStyle(`
+body {
+    background-color: #212121;
+}
+.exode-var {
+    font-style: italic !important;
+    font-weight: bold !important;
+    color: gold !important;
+}
+        `)
     }
     // live searchS
     let identifiers = $('span.ace_identifier');
