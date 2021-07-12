@@ -88,7 +88,8 @@ if( ! installed ) {
 // Custom Editor Module ——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 if( ! installed ) {
-    $('#insiderenderpanel').css('background','unset'); // unset current background
+    $('#insiderenderpanel').css('background-color','unset'); // unset current background-color
+    $('#insiderenderpanel').css('background-image','unset'); // unset current background-image
     $('#insiderenderpanel').css('background-size','cover'); // set background to cover
 }
 
@@ -97,7 +98,7 @@ if( _defined(Editor) ) {
     if( _defined(Editor.custom_background) && _isNew('custom_background') ) {
         console.log("updated background")
         switch (Editor.custom_background) {
-            case 'Exode': $('#insiderenderpanel').css('background', `url("${ExodeEditor.custom_background}") !important`); break;
+            case 'Exode': $('#insiderenderpanel').css('background-image', `url("${ExodeEditor.custom_background}") !important`); break;
             default:
                 ( typeof Editor.custom_background === 'number' )
                 ? $('#insiderenderpanel').css('background-image', `url("${window.backgrounds[Editor.custom_background]||0}") !important`)
