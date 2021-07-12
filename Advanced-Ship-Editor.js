@@ -17,7 +17,7 @@ var ExodeEditor = {
 
 if( typeof Editor !== 'undefined' ) {
     (typeof Editor.custom_background !== 'undefined') ? (function(){
-        console.lod("STEP-1")
+        console.log("STEP-1")
         switch (Editor.custom_background) {
             case 'Exode': {console.log("STEP-2"); $('#insiderenderpanel').css('background', `url("${ExodeEditor.custom_background}")`); break}
             default: {console.log("STEP-3"); $('#insiderenderpanel').css('background', `url("${Editor.custom_background}")`); break}
