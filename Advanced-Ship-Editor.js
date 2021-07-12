@@ -1,19 +1,29 @@
 //var abc = [0, 1, 50, 100, 110, 130, 150, 180, 200, 190];
 
 var $ = window.jQuery;
+var @ = window;
 
 let installed = (typeof window.OSMinstalled !== 'undefined' );
 
 const _defined = (val) => (typeof val !== 'undefined');
-
 const _isNew  = (data) => (typeof window[data] === 'undefined' || window[data] !== Editor[data]);
 const _update = (data) => (window[data]  =  Editor[data]);
 
-// default
+// Exode Default
 const Exode = 'Exode';
 var ExodeEditor = {
     custom_background: "https://backgroundlabs.com/files/dark-canvas-background-2353.png", // dark-grey patern
 }
+
+
+// Declare jQuery Functions——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+if( ! installed ) {
+    @.keys = {};
+    $(document).keydown((e) => @.keys[e.which] = true);
+    $(document).keyup(((e) => delete @.keys[e.which]);
+}
+// ——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 
 // Backgrounds Map ——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 if( ! installed ) {
