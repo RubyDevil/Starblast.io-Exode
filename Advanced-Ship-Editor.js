@@ -2,10 +2,12 @@
 
 //var abc = [0, 1, 50, 100, 110, 130, 150, 180, 200, 190];
 
+let installed = (typeof window.OSMinstalled !== undefined );
+
 const defined = (val) => (typeof val === 'undefined');
 
 // default
-Exode = 'Exode';
+const Exode = 'Exode';
 var ExodeEditor = {
     custom_background: "http://backgroundlabs.com/files/dark-canvas-background-2353.png", // dark-grey patern
 }
@@ -31,7 +33,7 @@ if( typeof Editor !== 'undefined' ) {
 // Exode Variable Module ——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
     // style class
-    if( ! $('#exode-style-class')[0] ) {
+    if( ! installed ) {
         $(`<style id="exode-style-class">
         .exode-var {
             font-style: italic !important,
@@ -64,7 +66,7 @@ if( typeof Editor !== 'undefined' ) {
 
 (function /*Advanced Ship Building Script*/() {
     
-    if( AdancedShipBuildingMethodsInitialized === true ) return;
+    if( installed ) return;
     
     var Cords, a, b, baseModel, dataType, ds, h, isArray, isBody, isObject, isWing, l, ofs, p, pos, sc, t, undef, w, _Array, __save;
 
@@ -348,12 +350,9 @@ if( typeof Editor !== 'undefined' ) {
             enumerable: false
         })
     }
-    
-    // set that the methods have been defined.
-    AdancedShipBuildingMethodsInitialized = true;
 
 }).call(this);
 
 
-
+window.OSMinstalled = true
 
