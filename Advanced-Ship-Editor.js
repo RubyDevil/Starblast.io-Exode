@@ -10,49 +10,49 @@ var ExodeEditor = {
     custom_background: "http://backgroundlabs.com/files/dark-canvas-background-2353.png", // dark-grey patern
 }
 
-// style class
-if( ! $('#exode-style-class') ) {
-    $(`<style id="exode-style-class">
-    .exode-var {
-        'font-style': 'italic !important',
-        'font-weight': 'bold !important',
-        'color': 'gold !important',
-    }
-    </style>`).appendTo('body');
-}
-
 
 // Custom Editor Module ——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-if( typeof Editor !== 'undefined' ) {
-    console.log(Editor);
-    try {
-        switch (true) {
-            case defined(Editor.custom_background): {
-                console.log("")
-                switch (Editor.custom_background) {
-                    case Exode: 
-                        $('#insiderenderpanel > canvas').css(
-                            'background', `url("${ExodeEditor.custom_background}")`
-                        ); break;
-                    default: 
-                        $('#insiderenderpanel > canvas').css(
-                            'background', `url("${Editor.custom_background}")`
-                        ); break;
+(function /*Update Editor*/() {
+    if( typeof Editor !== 'undefined' ) {
+        try {
+            switch (true) {
+                case defined(Editor.custom_background): {
+                    console.log("")
+                    switch (Editor.custom_background) {
+                        case Exode: 
+                            $('#insiderenderpanel > canvas').css({
+                                'background-image': `url("${ExodeEditor.custom_background} !important")`,
+                                'backbround-size': 'cover'
+                            }); break;
+                        default: 
+                            $('#insiderenderpanel > canvas').css({
+                                'background-image': `url("${Editor.custom_background} !important")`,
+                                'backbround-size': 'cover'
+                            }); break;
+                    }
                 }
             }
-        }
-    } catch (error) { console.log(error) }
-}
-
+        } catch (error) { console.log(error) }
+    }
+})();
 // ————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 
 
 // Exode Variable Module ——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 (function /*Exode Markup*/() {
-    let identifiers = $('span.ace_identifier');
-    console.log(identifiers);
+    // style class
+    if( ! $('#exode-style-class')[0] ) {
+        $(`<style id="exode-style-class">
+        .exode-var {
+            'font-style': 'italic !important',
+            'font-weight': 'bold !important',
+            'color': 'gold !important',
+        }
+        </style>`).appendTo('body');
+    }
+    // live searchS
+    
     for(let identifier of identifiers) {
         if( identifier.innerHTML !== 'Exode' ) continue;
         else if( identifier.classList.contains('exode-var') ) continue;
