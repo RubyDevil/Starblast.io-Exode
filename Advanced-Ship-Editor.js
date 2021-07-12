@@ -6,8 +6,11 @@ var _$ = window;
 let installed = (typeof window.OSMinstalled !== 'undefined' );
 
 const _defined = (val) => (typeof val !== 'undefined');
-const _isNew  = (data) => (typeof window[data] === 'undefined' || window[data] !== Editor[data]);
-const _update = (data) => (window[data]  =  Editor[data]);
+var _isNew, _update;
+if( _defined(Editor) ) {
+    _isNew  = (data) => (typeof window[data] === 'undefined' || window[data] !== Editor[data]);
+    _update = (data) => (window[data]  =  Editor[data]);
+}
 
 // Exode Default
 const Exode = 'Exode';
