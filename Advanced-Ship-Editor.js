@@ -115,6 +115,7 @@ if( typeof Editor !== 'undefined' ) {
         $(`<style id="exode-stylesheet">
             html {background: none !important;}
             body {background: #212121 !important;}
+            .header {color: #E6E6E6;}
             .exode-var {font-style: italic !important; font-weight: bold !important; color: gold !important;}
         </style>`).appendTo('head')
     }
