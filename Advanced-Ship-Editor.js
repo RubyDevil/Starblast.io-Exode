@@ -10,19 +10,91 @@ var ExodeEditor = {
     custom_background: "https://backgroundlabs.com/files/dark-canvas-background-2353.png", // dark-grey patern
 }
 
+// Backgrounds Map ——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+if( ! initialized ) {
+    const backgrounds = {
+         1: 'https://t4.ftcdn.net/jpg/02/79/57/75/360_F_279577515_yLkfVqafoxKgt4wKPVF8ry0b9rCiPDQD.jpg',
+         2: 'https://media.istockphoto.com/vectors/blue-and-gold-abstract-minimal-geometric-background-abstract-hitech-vector-id1276890189?k=6&m=1276890189&s=612x612&w=0&h=ImQH6LP1JwkFSiCczOX6kc2vnFwN-aolxMlgrUzpDlE=',
+         3: 'https://static.vecteezy.com/system/resources/previews/002/490/560/non_2x/abstract-dark-blue-luxury-background-with-golden-line-diagonal-free-vector.jpg',
+         4: 'https://i.pinimg.com/736x/e2/86/3f/e2863f9426babeeed49346c570ca9100.jpg',
+         5: 'https://static.vecteezy.com/system/resources/previews/002/011/934/non_2x/paper-cut-luxury-gold-background-with-metal-texture-3d-abstract-for-gift-card-poster-on-wall-poster-template-landing-page-ui-ux-cover-book-banner-free-vector.jpg',
+         6: 'https://static.vecteezy.com/system/resources/thumbnails/002/011/979/small_2x/paper-cut-luxury-gold-background-with-metal-texture-3d-abstract-for-gift-card-poster-on-wall-poster-template-landing-page-ui-ux-cover-book-banner-free-vector.jpg',
+         6: 'https://static.vecteezy.com/system/resources/thumbnails/002/011/923/small_2x/paper-cut-luxury-gold-background-with-metal-texture-3d-abstract-for-gift-card-poster-on-wall-poster-template-landing-page-ui-ux-cover-book-banner-free-vector.jpg',
+         7: 'https://image.freepik.com/free-vector/golden-texture-overlap-layers-dark-background_67845-535.jpg',
+         8: 'https://image.freepik.com/vecteurs-libre/abstrait-bleu-fonce-texture-element-or-design-hexagonal_131186-5.jpg',
+         9: 'https://besthqwallpapers.com/Uploads/4-5-2020/131705/thumb2-gray-abstraction-background-gray-background-with-gold-lines-black-background-luxury-backgrounds.jpg',
+        10: 'https://t4.ftcdn.net/jpg/02/94/31/03/360_F_294310340_U86uCJlDb9jYNWAy8a8iX4t6OTHu3JXN.jpg',
+        11: 'https://image.freepik.com/free-vector/luxury-background-with-golden-details_23-2148385296.jpg',
+        12: 'https://img.freepik.com/vecteurs-libre/style-fond-luxe-or_23-2148639926.jpg?size=626&ext=jpg',
+        13: 'https://image.freepik.com/vecteurs-libre/fond-luxe-or_52683-43998.jpg',
+        14: 'https://img.freepik.com/vecteurs-libre/luxueux-fond-brun-dore-elegant_132724-56.jpg?size=626&ext=jpg&ga=GA1.2.1523869591.1622851200',
+        15: 'https://image.freepik.com/vecteurs-libre/luxueux-fond-brun-dore-elegant_132724-57.jpg',
+        16: 'https://img.freepik.com/vecteurs-libre/luxueux-fond-brun-dore-elegant_132724-58.jpg?size=626&ext=jpg',
+        17: 'https://image.freepik.com/vecteurs-libre/luxueux-fond-brun-dore-elegant_132724-55.jpg',
+        18: 'https://image.freepik.com/vecteurs-libre/fond-ligne-rouge-or-luxe_132724-5.jpg',
+        19: 'https://image.freepik.com/vecteurs-libre/fond-ligne-rouge-or-luxe_132724-4.jpg',
+        20: 'https://image.freepik.com/vecteurs-libre/fond-ligne-rouge-or-luxe_132724-6.jpg',
+        21: 'https://image.freepik.com/vecteurs-libre/fond-ligne-rouge-or-luxe_132724-7.jpg',
+        22: 'https://image.freepik.com/vecteurs-libre/fond-ligne-rouge-or-luxe_132724-8.jpg',
+        23: 'https://image.freepik.com/vecteurs-libre/fond-ligne-rouge-or-luxe_132724-9.jpg',
+        24: 'https://image.freepik.com/vecteurs-libre/fond-ligne-rouge-or-luxe_132724-10.jpg',
+        25: 'https://image.freepik.com/vecteurs-libre/fond-ligne-rouge-or-luxe_132724-15.jpg',
+        26: 'https://image.freepik.com/vecteurs-libre/fond-ligne-rouge-or-luxe_132724-16.jpg',
+        27: 'https://image.freepik.com/vecteurs-libre/fond-ligne-rouge-or-luxe_132724-17.jpg',
+        28: 'https://image.freepik.com/vecteurs-libre/fond-ligne-rouge-or-luxe_132724-18.jpg',
+        29: 'https://image.freepik.com/vecteurs-libre/fond-ligne-rouge-or-luxe_132724-29.jpg',
+        30: 'https://image.freepik.com/vecteurs-libre/fond-ligne-rouge-or-luxe_132724-30.jpg',
+        31: 'https://image.freepik.com/vecteurs-libre/fond-ligne-rouge-or-luxe_132724-31.jpg',
+        32: 'https://image.freepik.com/vecteurs-libre/fond-ligne-rouge-or-luxe_132724-32.jpg',
+        33: 'https://image.freepik.com/vecteurs-libre/fond-ligne-rouge-or-luxe_132724-43.jpg',
+        34: 'https://image.freepik.com/vecteurs-libre/fond-ligne-rouge-or-luxe_132724-44.jpg',
+        35: 'https://image.freepik.com/vecteurs-libre/fond-ligne-rouge-or-luxe_132724-45.jpg',
+        36: 'https://image.freepik.com/vecteurs-libre/fond-ligne-rouge-or-luxe_132724-46.jpg',
+        37: 'https://image.freepik.com/vecteurs-libre/fond-ligne-rouge-or-luxe_132724-47.jpg',
+        38: 'https://image.freepik.com/vecteurs-libre/fond-ligne-rouge-or-luxe_132724-48.jpg',
+        39: 'https://image.freepik.com/vecteurs-libre/fond-ligne-rouge-or-luxe_132724-49.jpg',
+        40: 'https://image.freepik.com/vecteurs-libre/fond-ligne-rouge-or-luxe_132724-50.jpg',
+        41: 'https://image.freepik.com/vecteurs-libre/fond-ligne-rouge-or-luxe_132724-55.jpg',
+        42: 'https://image.freepik.com/vecteurs-libre/fond-ligne-rouge-or-luxe_132724-56.jpg',
+        43: 'https://image.freepik.com/vecteurs-libre/fond-ligne-rouge-or-luxe_132724-57.jpg',
+        44: 'https://image.freepik.com/vecteurs-libre/fond-ligne-rouge-or-luxe_132724-58.jpg',
+        45: 'https://image.freepik.com/vecteurs-libre/fond-ligne-rouge-or-luxe_132724-59.jpg',
+        46: 'https://image.freepik.com/vecteurs-libre/fond-ligne-rouge-or-luxe_132724-60.jpg',
+        47: 'https://image.freepik.com/vecteurs-libre/fond-ligne-rouge-or-luxe_132724-61.jpg',
+        48: 'https://image.freepik.com/vecteurs-libre/fond-ligne-rouge-or-luxe_132724-62.jpg',
+        49: 'https://image.freepik.com/vecteurs-libre/fond-ligne-rouge-or-luxe_132724-63.jpg',
+        50: 'https://image.freepik.com/vecteurs-libre/fond-ligne-rouge-or-luxe_132724-69.jpg',
+        51: 'https://image.freepik.com/vecteurs-libre/fond-ligne-rouge-or-luxe_132724-70.jpg',
+        52: 'https://image.freepik.com/vecteurs-libre/fond-ligne-rouge-or-luxe_132724-71.jpg',
+        53: 'https://image.freepik.com/vecteurs-libre/fond-ligne-rouge-or-luxe_132724-72.jpg',
+        54: 'https://image.freepik.com/vecteurs-libre/fond-ligne-rouge-or-luxe_132724-73.jpg',
+        55: 'https://image.freepik.com/vecteurs-libre/fond-ligne-rouge-or-luxe_132724-75.jpg',
+        56: 'https://image.freepik.com/vecteurs-libre/fond-ligne-rouge-or-luxe_132724-76.jpg',
+        57: 'https://image.freepik.com/vecteurs-libre/fond-ligne-rouge-or-luxe_132724-77.jpg',
+        58: 'https://image.freepik.com/vecteurs-libre/fond-ligne-rouge-or-luxe_132724-80.jpg',
+        59: 'https://static.vecteezy.com/ti/vecteur-libre/p1/2138811-fond-de-luxe-noir-et-or-gratuit-vectoriel.jpg',
+        60: 'https://us.123rf.com/450wm/kundra/kundra1106/kundra110600005/9923368-texture.jpg?ver=6',
+    }
+}
+// ————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+
 
 // Custom Editor Module ——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 if( typeof Editor !== 'undefined' ) {
-    (typeof Editor.custom_background !== 'undefined') ? (function(){
+    if(typeof Editor.custom_background !== 'undefined')
         switch (Editor.custom_background) {
-            case 'Exode': {$('#insiderenderpanel').css('background', `url("${ExodeEditor.custom_background}")`); break}
-            default: {$('#insiderenderpanel').css('background', `url("${Editor.custom_background}")`); break}
-        }
-    })() : (function(){
-        $('#insiderenderpanel').css('background', `url("${Editor.custom_background}")`)
-    })();
+            case 'Exode': $('#insiderenderpanel').css('background', `url("${ExodeEditor.custom_background}")`); break;
+            default:
+                ( typeof Editor.custom_background === 'number' )
+                ? $('#insiderenderpanel').css('background', `url("${backgrounds[Editor.custom_background]||''}")`)
+                : $('#insiderenderpanel').css('background', `url("${Editor.custom_background}")`);
+                break;
+        };
+    else $('#insiderenderpanel').css('background', `url("${ExodeEditor.custom_background}")`);
     $('#insiderenderpanel').css('background-size','cover');
+    // if ...new option...
 }
 
 // ————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -38,17 +110,9 @@ if( typeof Editor !== 'undefined' ) {
         .attr('src', 'https://fontmeme.com/permalink/210712/c072cd76192d267f5d1729b84c1f1642.png');
         // change css styles
         $(`<style id="exode-stylesheet">
-            html {
-                background: none !important;
-            }
-            body {
-                background: #212121 !important;
-            }
-            .exode-var {
-                font-style: italic !important;
-                font-weight: bold !important;
-                color: gold !important;
-            }
+            html {background: none !important;}
+            body {background: #212121 !important;}
+            .exode-var {font-style: italic !important; font-weight: bold !important; color: gold !important;}
         </style>`).appendTo('head')
     }
     // live searchS
