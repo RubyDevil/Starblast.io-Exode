@@ -120,21 +120,22 @@ if( _defined(Editor) ) {
         _update('custom_background')
     }
     //else if( ! isdefined(Editor.custom_background)) { $('#insiderenderpanel').css('background', `url("${ExodeEditor.custom_background}")`); }
-    /*
     // text_color
     if( _defined(Editor.text_color) && _isNew('text_color') ) {
         switch (Editor.text_color) {
-            case 'Exode':
-                $('style#ace_identifier_color').html(); break;
-            default:
-                ( typeof Editor.custom_background === 'number' )
-                ? $('#insiderenderpanel').css('background-image', `url("${window.backgrounds[Editor.custom_background]||0}")`)
-                : $('#insiderenderpanel').css('background-image', `url("${Editor.custom_background}")`);
-                break;
+            case 'Exode': $('style#ace_identifier_color').html('.ace_identifier {color: greenyellow}'); break;
+            default: $('style#ace_identifier_color').html(`.ace_identifier {color: ${Editor.text_color}}`); break;
         };
         _update('text_color')
     }
-    */
+    // italic
+    if( _defined(Editor.italic) && _isNew('italic') ) {
+        switch (Editor.italic) {
+            case 'Exode': $('style#ace_identifier_italic').html('.ace_identifier {font-style: italic}'); break;
+            default: $('style#ace_identifier_italic').html(`.ace_identifier {color: ${Editor.text_color}}`); break;
+        };
+        _update('italic')
+    }
 }
 
 // ————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
