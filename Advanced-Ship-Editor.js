@@ -177,7 +177,7 @@ if( _defined(Editor) ) {
 
     baseModel = {
         body: {
-            section_segments: 4,
+            section_segments: 8,
             width: _Array,
             height: _Array,
             angle: 0,
