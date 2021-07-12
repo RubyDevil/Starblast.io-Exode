@@ -18,16 +18,8 @@ if( typeof Editor !== 'undefined' ) {
             case defined(Editor.custom_background): {
                 console.log("")
                 switch (Editor.custom_background) {
-                    case Exode: 
-                        $('#insiderenderpanel > canvas').css({
-                            'background-image': `url("${ExodeEditor.custom_background} !important")`,
-                            'backbround-size': 'cover'
-                        }); break;
-                    default: 
-                        $('#insiderenderpanel > canvas').css({
-                            'background-image': `url("${Editor.custom_background} !important")`,
-                            'backbround-size': 'cover'
-                        }); break;
+                    case Exode: $('#insiderenderpanel > canvas').css('background-image', `url("${ExodeEditor.custom_background}) !important`); break;
+                    default: $('#insiderenderpanel > canvas').css('background-image', `url("${Editor.custom_background}") !important`); break;
                 }
             }
         }
@@ -72,6 +64,8 @@ if( typeof Editor !== 'undefined' ) {
 // editing script above
 
 (function /*Advanced Ship Building Script*/() {
+    
+    if( window.AdancedShipBuildingMethodsInitialized ) return;
     
     var Cords, a, b, baseModel, dataType, ds, h, isArray, isBody, isObject, isWing, l, ofs, p, pos, sc, t, undef, w, _Array, __save;
 
@@ -350,11 +344,14 @@ if( typeof Editor !== 'undefined' ) {
         })
     }
     
-    for(let key of Object.keys(Object.prototype)) {
+    for(let key of Object.prototype) {
         Object.defineProperty(Object.prototype, key, {
             enumerable: false
         })
     }
+    
+    // set that the methods have been defined.
+    window.AdancedShipBuildingMethodsInitialized = true;
 
 }).call(this);
 
