@@ -83,7 +83,7 @@ if( ! initialized ) {
 // Custom Editor Module ——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 if( typeof Editor !== 'undefined' ) {
-    if(typeof Editor.custom_background !== 'undefined')
+    if(typeof Editor.custom_background !== 'undefined') {
         switch (Editor.custom_background) {
             case 'Exode': $('#insiderenderpanel').css('background', `url("${ExodeEditor.custom_background}")`); break;
             default:
@@ -92,6 +92,7 @@ if( typeof Editor !== 'undefined' ) {
                 : $('#insiderenderpanel').css('background', `url("${Editor.custom_background}")`);
                 break;
         };
+    }
     else $('#insiderenderpanel').css('background', `url("${ExodeEditor.custom_background}")`);
     $('#insiderenderpanel').css('background-size','cover');
     // if ...new option...
