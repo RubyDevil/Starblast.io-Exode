@@ -4,7 +4,10 @@ var $ = window.jQuery;
 
 let installed = (typeof window.OSMinstalled !== 'undefined' );
 
-const defined = (val) => (typeof val === 'undefined');
+const _defined = (val) => (typeof val !== 'undefined');
+
+const _isNew  = (data) => (typeof window[data] === 'undefined' || window[data] !== Editor[data]);
+const _update = (data) => (window[data]  =  Editor[data]);
 
 // default
 const Exode = 'Exode';
@@ -84,8 +87,14 @@ if( ! installed ) {
 
 // Custom Editor Module ——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-if( typeof Editor !== 'undefined' ) {
-    if(typeof Editor.custom_background !== 'undefined') {
+if( ! installed ) {
+    $('#insiderenderpanel').css('background-size','cover'); // set background to cover
+}
+
+if( _defined(Editor) ) {
+    // custom_background
+    if( _defined(Editor.custom_background) && _isNew('custom_background') ) {
+        console.log("updated background")
         switch (Editor.custom_background) {
             case 'Exode': $('#insiderenderpanel').css('background', `url("${ExodeEditor.custom_background}")`); break;
             default:
@@ -94,9 +103,9 @@ if( typeof Editor !== 'undefined' ) {
                 : $('#insiderenderpanel').css('background', `url("${Editor.custom_background}")`);
                 break;
         };
+        _update('custom_background')
     }
-    else $('#insiderenderpanel').css('background', `url("${ExodeEditor.custom_background}")`);
-    $('#insiderenderpanel').css('background-size','cover');
+    //else if( ! isdefined(Editor.custom_background)) { $('#insiderenderpanel').css('background', `url("${ExodeEditor.custom_background}")`); }
     // if ...new option...
 }
 
