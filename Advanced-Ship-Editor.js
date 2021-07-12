@@ -13,26 +13,24 @@ var ExodeEditor = {
 
 // Custom Editor Module ——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-    if( typeof Editor !== 'undefined' ) {
-        try {
-            switch (true) {
-                case defined(Editor.custom_background): {
-                    console.log("")
-                    switch (Editor.custom_background) {
-                        case Exode: 
-                            $('#insiderenderpanel > canvas').css({
-                                'background-image': `url("${ExodeEditor.custom_background} !important")`,
-                                'backbround-size': 'cover'
-                            }); break;
-                        default: 
-                            $('#insiderenderpanel > canvas').css({
-                                'background-image': `url("${Editor.custom_background} !important")`,
-                                'backbround-size': 'cover'
-                            }); break;
-                    }
+if( typeof Editor !== 'undefined' ) {
+        switch (true) {
+            case defined(Editor.custom_background): {
+                console.log("")
+                switch (Editor.custom_background) {
+                    case Exode: 
+                        $('#insiderenderpanel > canvas').css({
+                            'background-image': `url("${ExodeEditor.custom_background} !important")`,
+                            'backbround-size': 'cover'
+                        }); break;
+                    default: 
+                        $('#insiderenderpanel > canvas').css({
+                            'background-image': `url("${Editor.custom_background} !important")`,
+                            'backbround-size': 'cover'
+                        }); break;
                 }
             }
-        } catch (error) { console.log(error) }
+        }
     }
 
 // ————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
