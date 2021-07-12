@@ -19,8 +19,8 @@ if( typeof Editor !== 'undefined' ) {
         switch (true) {
             case defined(Editor.custom_background): {
                 switch (Editor.custom_background) {
-                    case Exode: $('#insiderenderpanel > canvas').css('background-image', `url("${ExodeEditor.custom_background}") !important`); break;
-                    default: $('#insiderenderpanel > canvas').css('background-image', `url("${Editor.custom_background}") !important`); break;
+                    case Exode: $('#insiderenderpanel > canvas').css('background', `url("${ExodeEditor.custom_background}") !important`); break;
+                    default: $('#insiderenderpanel > canvas').css('background', `url("${Editor.custom_background}") !important`); break;
                 }
             }
         }
