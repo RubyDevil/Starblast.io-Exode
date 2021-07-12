@@ -1,7 +1,7 @@
 //var abc = [0, 1, 50, 100, 110, 130, 150, 180, 200, 190];
 
 var $ = window.jQuery;
-var @ = window;
+var _$ = window;
 
 let installed = (typeof window.OSMinstalled !== 'undefined' );
 
@@ -18,9 +18,9 @@ var ExodeEditor = {
 
 // Declare jQuery Functions——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 if( ! installed ) {
-    @.keys = {};
-    $(document).keydown((e) => @.keys[e.which] = true);
-    $(document).keyup(((e) => delete @.keys[e.which]);
+    _$.keys = {};
+    $(document).keydown((e) => _$.keys[e.which] = true);
+    $(document).keyup(((e) => delete _$.keys[e.which]);
 }
 // ——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -101,12 +101,14 @@ if( ! installed ) {
     $('#insiderenderpanel').css('background-color','unset'); // unset current background-color
     $('#insiderenderpanel').css('background-image','unset'); // unset current background-image
     $('#insiderenderpanel').css('background-size','cover'); // set background to cover
+    //$('<style id="ace_identifier"></style>').appendTo('head')// create identifier style class file
+    $('<style id="ace_identifier_color"></style>').appendTo('head')// create identifier color style class file
+    $('<style id="ace_identifier_italic"></style>').appendTo('head')// create identifier italic style class file
 }
 
 if( _defined(Editor) ) {
     // custom_background
     if( _defined(Editor.custom_background) && _isNew('custom_background') ) {
-        console.log("updated background")
         switch (Editor.custom_background) {
             case 'Exode': $('#insiderenderpanel').css('background-image', `url("${ExodeEditor.custom_background}")`); break;
             default:
@@ -118,7 +120,21 @@ if( _defined(Editor) ) {
         _update('custom_background')
     }
     //else if( ! isdefined(Editor.custom_background)) { $('#insiderenderpanel').css('background', `url("${ExodeEditor.custom_background}")`); }
-    // if ...new option...
+    /*
+    // text_color
+    if( _defined(Editor.text_color) && _isNew('text_color') ) {
+        switch (Editor.text_color) {
+            case 'Exode':
+                $('style#ace_identifier_color').html(); break;
+            default:
+                ( typeof Editor.custom_background === 'number' )
+                ? $('#insiderenderpanel').css('background-image', `url("${window.backgrounds[Editor.custom_background]||0}")`)
+                : $('#insiderenderpanel').css('background-image', `url("${Editor.custom_background}")`);
+                break;
+        };
+        _update('text_color')
+    }
+    */
 }
 
 // ————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
