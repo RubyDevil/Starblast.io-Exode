@@ -132,7 +132,11 @@ if( _defined(Editor) ) {
     if( _defined(Editor.italic) && _isNew('italic') ) {
         switch (Editor.italic) {
             case 'Exode': $('style#ace_identifier_italic').html('.ace_identifier {font-style: italic}'); break;
-            default: $('style#ace_identifier_italic').html(`.ace_identifier {color: ${Editor.text_color}}`); break;
+            default: 
+                ( Editor.italic === true )
+                ? $('style#ace_identifier_italic').html('.ace_identifier {font-style: italic}');
+                : $('style#ace_identifier_italic').html('.ace_identifier {font-style: unset}');
+                break;
         };
         _update('italic')
     }
