@@ -166,7 +166,7 @@ if( _defined(Editor) ) {
     // live search
     let identifiers = $('span.ace_identifier');
     for(let identifier of identifiers) {
-        if( identifier.innerHTML !== 'Exode' ) continue;
+        if( identifier.innerHTML !== 'Exode' && identifier.innerHTML !== 'Editor' ) continue;
         else if( identifier.classList.contains('exode-var') ) continue;
         identifier.setAttribute('class', 'exode-var');
         break;
