@@ -22,9 +22,9 @@ if( typeof Editor !== 'undefined' ) {
             case Exode: $('.insiderenderpanel').css('background', `url("${ExodeEditor.custom_background}")`); break;
             default: $('.insiderenderpanel').css('background', `url("${Editor.custom_background}")`); break;
         }
-    ) : ($('.insiderenderpanel').css('background', `url("${Editor.custom_background}")`));
+    })() : ($('.insiderenderpanel').css('background', `url("${Editor.custom_background}")`));
 }
-https://fontmeme.com/permalink/210712/c072cd76192d267f5d1729b84c1f1642.png
+
 // ————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 
@@ -48,18 +48,6 @@ https://fontmeme.com/permalink/210712/c072cd76192d267f5d1729b84c1f1642.png
             }
             
         `)
-        
-        
-        
-        function overrideStyle(css) {
-            var head, style;
-            head = document.getElementsByTagName('head')[0];
-            if (!head) { return; }
-            style = document.createElement('style');
-            style.type = 'text/css';
-            style.innerHTML = css.replace(/;/g, ' !important;');
-            head.appendChild(style);
-        }
     }
     // live searchS
     let identifiers = $('span.ace_identifier');
