@@ -39,7 +39,7 @@ function Markup() {
         break;
     }
 }
-document.addEventListener('keydown', Markup());
+//document.addEventListener('keydown', Markup());
 // ————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 
