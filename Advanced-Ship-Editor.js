@@ -11,42 +11,51 @@ var ExodeEditor = {
 }
 
 // style class
-$('.exode-var').css({
-    'font-style': 'italic !important',
-    'font-weight': 'bold !important',
-    'color': 'gold !important',
-})
+(function install_ExodeStyleClass() {
+    if( $('#exode-style-class') ) return;
+    $(`<style id="exode-style-class">
+    .exode-var {
+        'font-style': 'italic !important',
+        'font-weight': 'bold !important',
+        'color': 'gold !important',
+    }
+    </style>`).appendTo(document.body);
+})();
 
 
 
-
-if( typeof Editor !== 'undefined' ) {
-    console.log(Editor);
-    try {
-        switch (true) {
-            case defined(Editor.custom_background): {
-                console.log("")
-                switch (Editor.custom_background) {
-                    case Exode: $('.insiderenderpanel').css('background', `url("${ExodeEditor.custom_background}")`); break;
-                    default: $('.insiderenderpanel').css('background', `url("${Editor.custom_background}")`); break;
+// Custom Editor Module ——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+(function UpdateEditor() {
+    if( typeof Editor !== 'undefined' ) {
+        console.log(Editor);
+        try {
+            switch (true) {
+                case defined(Editor.custom_background): {
+                    console.log("")
+                    switch (Editor.custom_background) {
+                        case Exode: $('.insiderenderpanel').css('background', `url("${ExodeEditor.custom_background}")`); break;
+                        default: $('.insiderenderpanel').css('background', `url("${Editor.custom_background}")`); break;
+                    }
                 }
             }
-        }
-    } catch (error) { console.log(error) }
-}
+        } catch (error) { console.log(error) }
+    }
+})();
+// ————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 
 
 // Exode Variable Module ——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-const Markup = () => {
+(function MarkupExode() {
     let identifiers = $('span.ace_identifier');
     console.log(identifiers);
     for(let identifier of identifiers) {
-        if( identifier.innerHTML !== Exode ) continue;
+        if( identifier.innerHTML !== 'Exode' ) continue;
         else if( identifier.classList.contains('exode-var') ) continue;
         identifier.setAttribute('class', 'exode-var');
         break;
     }
-}
+})();
 // ————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 
