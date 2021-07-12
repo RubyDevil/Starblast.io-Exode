@@ -15,14 +15,13 @@ var ExodeEditor = {
 
 if( typeof Editor !== 'undefined' ) {
     (typeof Editor.custom_background !== 'undefined') ? (function(){
-        console.log("STEP-1")
         switch (Editor.custom_background) {
-            case 'Exode': {console.log("STEP-2"); $('#insiderenderpanel').css('background', `url("${ExodeEditor.custom_background}")`); break}
-            default: {console.log("STEP-3"); $('#insiderenderpanel').css('background', `url("${Editor.custom_background}")`); break}
+            case 'Exode': {$('#insiderenderpanel').css('background', `url("${ExodeEditor.custom_background}")`); break}
+            default: {$('#insiderenderpanel').css('background', `url("${Editor.custom_background}")`); break}
         }
     })() : (function(){
         $('#insiderenderpanel').css('background', `url("${Editor.custom_background}")`)
-    });
+    })();
 }
 
 // ————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -36,13 +35,13 @@ if( typeof Editor !== 'undefined' ) {
         // change logo
         $('body > div.wrapper > div.header > img')
         .attr('src', 'https://fontmeme.com/permalink/210712/c072cd76192d267f5d1729b84c1f1642.png');
-        // add refresh style button
-        $('<div style="border: none;float: right;margin: 5px;padding: 7px;border-radius: 10px;background-color: cornflowerblue;background-clip: border-box;">Refresh Style</div>')
-        .appendTo('body > div.wrapper > div.centerpanel > div.editorpanel > div.insideeditorpanel');
         // change css styles
         $(`<style id="exode-stylesheet">
+            html {
+                background: none !important;
+            }
             body {
-                background-color: #212121 !important;
+                background: #212121 !important;
             }
             .exode-var {
                 font-style: italic !important;
