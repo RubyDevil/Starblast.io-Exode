@@ -9,21 +9,21 @@ const defined = (val) => (typeof val === 'undefined');
 // default
 const Exode = 'Exode';
 var ExodeEditor = {
-    custom_background: "http://backgroundlabs.com/files/dark-canvas-background-2353.png", // dark-grey patern
+    custom_background: "https://backgroundlabs.com/files/dark-canvas-background-2353.png", // dark-grey patern
 }
 
 
 // Custom Editor Module ——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 if( typeof Editor !== 'undefined' ) {
-    console.log("Updating Background")
-    defined(Editor.custom_background) ? (function(){
+    (typeof Editor.custom_background !== 'undefined') ? (function(){
+        console.lod("STEP-1")
         switch (Editor.custom_background) {
-            case Exode: $('#insiderenderpanel > canvas').css('background', `url("${ExodeEditor.custom_background}")`); break;
-            default: $('#insiderenderpanel > canvas').css('background', `url("${Editor.custom_background}")`); break;
+            case 'Exode': {console.log("STEP-2"); $('#insiderenderpanel').css('background', `url("${ExodeEditor.custom_background}")`); break}
+            default: {console.log("STEP-3"); $('#insiderenderpanel').css('background', `url("${Editor.custom_background}")`); break}
         }
     })() : (function(){
-        $('#insiderenderpanel > canvas').css('background', `url("${Editor.custom_background}")`)
+        $('#insiderenderpanel').css('background', `url("${Editor.custom_background}")`)
     });
 }
 
