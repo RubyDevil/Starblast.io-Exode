@@ -22,22 +22,27 @@ if( typeof Editor !== 'undefined' ) {
             case Exode: $('#insiderenderpanel > canvas').css('background', `url("${ExodeEditor.custom_background}")`); break;
             default: $('#insiderenderpanel > canvas').css('background', `url("${Editor.custom_background}")`); break;
         }
-    })() : ($('#insiderenderpanel > canvas').css('background', `url("${Editor.custom_background}")`));
+    })() : (function(){
+        $('#insiderenderpanel > canvas').css('background', `url("${Editor.custom_background}")`)
+    });
 }
 
 // ————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 
 
-// Exode Variable Module ——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+// Exode Styles Module ——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
     // DEFAULT - AUTO SETTINGS
     if( ! installed ) {
-    // change logo
-        $('body > div.wrapper > div.header > img').attr('src', 'https://fontmeme.com/permalink/210712/c072cd76192d267f5d1729b84c1f1642.png');
-    // change styles
-        overrideStyle(`
-            
+        // change logo
+        $('body > div.wrapper > div.header > img')
+        .attr('src', 'https://fontmeme.com/permalink/210712/c072cd76192d267f5d1729b84c1f1642.png');
+        // add refresh style button
+        $('<div style="border: none;float: right;margin: 5px;padding: 7px;border-radius: 10px;background-color: cornflowerblue;background-clip: border-box;">Refresh Style</div>')
+        .appendTo('body > div.wrapper > div.centerpanel > div.editorpanel > div.insideeditorpanel');
+        // change css styles
+        $(`<style id="exode-stylesheet">
             body {
                 background-color: #212121 !important;
             }
@@ -46,8 +51,7 @@ if( typeof Editor !== 'undefined' ) {
                 font-weight: bold !important;
                 color: gold !important;
             }
-            
-        `)
+        </style>`).appendTo('head')
     }
     // live searchS
     let identifiers = $('span.ace_identifier');
