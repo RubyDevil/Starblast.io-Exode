@@ -1,4 +1,5 @@
-/*
+/* eslint-disable no-extend-native, default-case */
+
 //var abc = [0, 1, 50, 100, 110, 130, 150, 180, 200, 190];
 
 const defined = (val) => (typeof val === 'undefined');
@@ -51,7 +52,7 @@ var ExodeEditor = {
         </style>`).appendTo('body');
     }
     // live searchS
-    
+    let identifiers = $('span.ace_identifier');
     for(let identifier of identifiers) {
         if( identifier.innerHTML !== 'Exode' ) continue;
         else if( identifier.classList.contains('exode-var') ) continue;
@@ -362,5 +363,3 @@ var ExodeEditor = {
 
 
 
-
-*/
