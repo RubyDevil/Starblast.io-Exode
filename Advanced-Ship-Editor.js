@@ -88,6 +88,7 @@ if( ! installed ) {
 // Custom Editor Module ——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 if( ! installed ) {
+    $('#insiderenderpanel').css('background','unset'); // unset current background
     $('#insiderenderpanel').css('background-size','cover'); // set background to cover
 }
 
@@ -96,11 +97,11 @@ if( _defined(Editor) ) {
     if( _defined(Editor.custom_background) && _isNew('custom_background') ) {
         console.log("updated background")
         switch (Editor.custom_background) {
-            case 'Exode': $('#insiderenderpanel').css('background', `url("${ExodeEditor.custom_background}")`); break;
+            case 'Exode': $('#insiderenderpanel').css('background', `url("${ExodeEditor.custom_background}") !important`); break;
             default:
                 ( typeof Editor.custom_background === 'number' )
-                ? $('#insiderenderpanel').css('background', `url("${window.backgrounds[Editor.custom_background]||''}")`)
-                : $('#insiderenderpanel').css('background', `url("${Editor.custom_background}")`);
+                ? $('#insiderenderpanel').css('background-image', `url("${window.backgrounds[Editor.custom_background]||0}") !important`)
+                : $('#insiderenderpanel').css('background-image', `url("${Editor.custom_background}") !important`);
                 break;
         };
         _update('custom_background')
@@ -115,7 +116,7 @@ if( _defined(Editor) ) {
 
 // Exode Styles Module ——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-    // DEFAULT - AUTO SETTINGS
+    // DEFAULT - STYLES
     if( ! installed ) {
         // change logo
         $('body > div.wrapper > div.header > img')
@@ -129,7 +130,8 @@ if( _defined(Editor) ) {
             .exode-var {font-style: italic !important; font-weight: bold !important; color: gold !important;}
         </style>`).appendTo('head')
     }
-    // live searchS
+
+    // live search
     let identifiers = $('span.ace_identifier');
     for(let identifier of identifiers) {
         if( identifier.innerHTML !== 'Exode' ) continue;
@@ -158,25 +160,15 @@ if( _defined(Editor) ) {
     var Cords, a, b, baseModel, dataType, ds, h, isArray, isBody, isObject, isWing, l, ofs, p, pos, sc, t, undef, w, _Array, __save;
 
     pos = 'position';
-
     w = 'width';
-
     h = 'height';
-
     l = 'length';
-
     b = 'bump';
-
     sc = 'section_segment';
-
     ds = 'doubleside';
-
     ofs = 'offset';
-
     a = 'angle';
-
     t = 'texture';
-
     p = 'propeller';
 
     Cords = ['x', 'y', 'z'];
