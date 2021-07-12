@@ -144,6 +144,18 @@ if( typeof Editor !== 'undefined' ) {
         };
         _update('italic')
     }
+    // centerize_canvas  
+    if( typeof Editor.centerize_canvas !== 'undefined' && _isNew('centerize_canvas') ) {
+        switch (Editor.centerize_canvas) {
+            case 'Exode': $('#insiderenderpanel > canvas').css({ 'width':'unset !important', 'height':'100%' }) ; break;
+            default: 
+                ( Editor.centerize_canvas === true )
+                ? $('#insiderenderpanel > canvas').css({ 'width':'unset !important', 'height':'100%' }) 
+                : $('#insiderenderpanel > canvas').css({ 'width':'100%', 'height':'unset' });
+                break;
+        };
+        _update('centerize_canvas')
+    }
 }
 
 // ————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
