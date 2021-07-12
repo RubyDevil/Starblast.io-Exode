@@ -98,9 +98,6 @@ if( ! installed ) {
 // Custom Editor Module ——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 if( ! installed ) {
-    $('#insiderenderpanel').css('background-color','unset'); // unset current background-color
-    $('#insiderenderpanel').css('background-image','unset'); // unset current background-image
-    $('#insiderenderpanel').css('background-size','cover'); // set background to cover
     //$('<style id="ace_identifier"></style>').appendTo('head')// create identifier style class file
     $('<style id="ace_identifier_color"></style>').appendTo('head')// create identifier color style class file
     $('<style id="ace_identifier_italic"></style>').appendTo('head')// create identifier italic style class file
@@ -109,6 +106,12 @@ if( ! installed ) {
 if( typeof Editor !== 'undefined' ) {
     // custom_background
     if( typeof Editor.custom_background !== 'undefined' && _isNew('custom_background') ) {
+        if( ! _$.background_deleted ) {
+            $('#insiderenderpanel').css('background-color','unset'); // unset current background-color
+            $('#insiderenderpanel').css('background-image','unset'); // unset current background-image
+            $('#insiderenderpanel').css('background-size','cover'); // set background to cover
+            _$.background_deleted = true;
+        }
         switch (Editor.custom_background) {
             case 'Exode': $('#insiderenderpanel').css('background-image', `url("${ExodeEditor.custom_background}")`); break;
             default:
