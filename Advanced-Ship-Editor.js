@@ -5,12 +5,9 @@ var _$ = window;
 
 let installed = (typeof window.OSMinstalled !== 'undefined' );
 
-const _defined = (val) => (typeof val !== 'undefined');
-var _isNew, _update;
-if( _defined(Editor) ) {
-    _isNew  = (data) => (typeof window[data] === 'undefined' || window[data] !== Editor[data]);
-    _update = (data) => (window[data]  =  Editor[data]);
-}
+//const _defined = (val) => (typeof val !== 'undefined');
+const _isNew  = (data) => (typeof window[data] === 'undefined' || window[data] !== Editor[data]);
+const _update = (data) => (window[data]  =  Editor[data]);
 
 // Exode Default
 const Exode = 'Exode';
@@ -109,9 +106,9 @@ if( ! installed ) {
     $('<style id="ace_identifier_italic"></style>').appendTo('head')// create identifier italic style class file
 }
 
-if( _defined(Editor) ) {
+if( typeof Editor !== 'undefined' ) {
     // custom_background
-    if( _defined(Editor.custom_background) && _isNew('custom_background') ) {
+    if( typeof Editor.custom_background !== 'undefined' && _isNew('custom_background') ) {
         switch (Editor.custom_background) {
             case 'Exode': $('#insiderenderpanel').css('background-image', `url("${ExodeEditor.custom_background}")`); break;
             default:
@@ -124,7 +121,7 @@ if( _defined(Editor) ) {
     }
     //else if( ! isdefined(Editor.custom_background)) { $('#insiderenderpanel').css('background', `url("${ExodeEditor.custom_background}")`); }
     // text_color
-    if( _defined(Editor.text_color) && _isNew('text_color') ) {
+    if( typeof Editor.text_color !== 'undefined' && _isNew('text_color') ) {
         switch (Editor.text_color) {
             case 'Exode': $('style#ace_identifier_color').html('.ace_identifier {color: greenyellow}'); break;
             default: $('style#ace_identifier_color').html(`.ace_identifier {color: ${Editor.text_color}}`); break;
@@ -132,7 +129,7 @@ if( _defined(Editor) ) {
         _update('text_color')
     }
     // italic
-    if( _defined(Editor.italic) && _isNew('italic') ) {
+    if( typeof Editor.italic !== 'undefined' && _isNew('italic') ) {
         switch (Editor.italic) {
             case 'Exode': $('style#ace_identifier_italic').html('.ace_identifier {font-style: italic}'); break;
             default: 
