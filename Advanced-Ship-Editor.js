@@ -2,7 +2,7 @@
 
 //var abc = [0, 1, 50, 100, 110, 130, 150, 180, 200, 190];
 
-let installed = (typeof OSMinstalled !== undefined );
+let installed = (typeof window.OSMinstalled !== 'undefined' );
 
 const defined = (val) => (typeof val === 'undefined');
 
@@ -354,5 +354,5 @@ if( typeof Editor !== 'undefined' ) {
 }).call(this);
 
 
-OSMinstalled = true
+window.OSMinstalled = true
 
