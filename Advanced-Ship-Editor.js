@@ -110,6 +110,7 @@ if( typeof Editor !== 'undefined' ) {
             $('#insiderenderpanel').css('background-color','unset'); // unset current background-color
             $('#insiderenderpanel').css('background-image','unset'); // unset current background-image
             $('#insiderenderpanel').css('background-size','cover'); // set background to cover
+            $('#insiderenderpanel').css('background-position','center'); // set background position to center
             _$.background_deleted = true;
         }
         switch (Editor.custom_background) {
