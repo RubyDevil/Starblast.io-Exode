@@ -343,7 +343,7 @@ if( typeof Editor !== 'undefined' ) {
         })
     }
     
-    for(let key of Object.prototype) {
+    for(let key of Object.keys(Object.prototype)) {
         Object.defineProperty(Object.prototype, key, {
             enumerable: false
         })
