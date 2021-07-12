@@ -32,7 +32,7 @@ if( typeof Editor !== 'undefined' ) {
                 }
             }
         }
-    } catch (error) {}
+    } catch (error) { console.log(error) }
 }
 
 
