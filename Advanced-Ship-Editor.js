@@ -36,9 +36,9 @@ if( typeof Editor !== 'undefined' ) {
     if( ! installed ) {
         $(`<style id="exode-style-class">
         .exode-var {
-            font-style: italic !important,
-            font-weight: bold !important,
-            color: gold !important,
+            font-style: italic !important;
+            font-weight: bold !important;
+            color: gold !important;
         }
         </style>`).appendTo('body');
     }
