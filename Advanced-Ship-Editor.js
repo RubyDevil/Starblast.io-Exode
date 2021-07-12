@@ -11,36 +11,34 @@ var ExodeEditor = {
 }
 
 // style class
-(function /*install Exode Style Class*/() {
-    if( $('#exode-style-class') ) return;
+if( ! $('#exode-style-class') ) {
     $(`<style id="exode-style-class">
     .exode-var {
         'font-style': 'italic !important',
         'font-weight': 'bold !important',
         'color': 'gold !important',
     }
-    </style>`).appendTo(document.body);
-})();
-
+    </style>`).appendTo('body');
+}
 
 
 // Custom Editor Module ——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-(function /*Update Editor*/() {
-    if( typeof Editor !== 'undefined' ) {
-        console.log(Editor);
-        try {
-            switch (true) {
-                case defined(Editor.custom_background): {
-                    console.log("")
-                    switch (Editor.custom_background) {
-                        case Exode: $('.insiderenderpanel').css('background', `url("${ExodeEditor.custom_background}")`); break;
-                        default: $('.insiderenderpanel').css('background', `url("${Editor.custom_background}")`); break;
-                    }
+
+if( typeof Editor !== 'undefined' ) {
+    console.log(Editor);
+    try {
+        switch (true) {
+            case defined(Editor.custom_background): {
+                console.log("")
+                switch (Editor.custom_background) {
+                    case Exode: $('.insiderenderpanel').css('background', `url("${ExodeEditor.custom_background}")`); break;
+                    default: $('.insiderenderpanel').css('background', `url("${Editor.custom_background}")`); break;
                 }
             }
-        } catch (error) { console.log(error) }
-    }
-})();
+        }
+    } catch (error) { console.log(error) }
+}
+
 // ————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 
