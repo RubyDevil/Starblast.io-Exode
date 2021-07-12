@@ -16,7 +16,6 @@ var ExodeEditor = {
 if( typeof Editor !== 'undefined' ) {
         switch (true) {
             case defined(Editor.custom_background): {
-                console.log("")
                 switch (Editor.custom_background) {
                     case Exode: $('#insiderenderpanel > canvas').css('background-image', `url("${ExodeEditor.custom_background}) !important`); break;
                     default: $('#insiderenderpanel > canvas').css('background-image', `url("${Editor.custom_background}") !important`); break;
@@ -35,9 +34,9 @@ if( typeof Editor !== 'undefined' ) {
     if( ! $('#exode-style-class')[0] ) {
         $(`<style id="exode-style-class">
         .exode-var {
-            'font-style': 'italic !important',
-            'font-weight': 'bold !important',
-            'color': 'gold !important',
+            font-style: italic !important,
+            font-weight: bold !important,
+            color: gold !important,
         }
         </style>`).appendTo('body');
     }
