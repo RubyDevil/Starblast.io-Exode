@@ -139,7 +139,6 @@ function Markup() {
         }
         return _results;
     };
-    return this;
 
     Object.prototype.autoComplete = Object.prototype.auto = function () {
         var key, val, _i, _j, _len, _len1, _ref, _results;
@@ -182,7 +181,6 @@ function Markup() {
             return _results;
         }
     };
-    return this;
 
     Object.prototype.loadModel = Object.prototype.loadObj = function (model) {
         var key, val;
@@ -332,7 +330,7 @@ function Markup() {
         })
     }
     
-    for(let key of Object.prototype) {
+    for(let key of Object.keys(Object.prototype)) {
         Object.defineProperty(Object.prototype, key, {
             enumerable: false
         })
