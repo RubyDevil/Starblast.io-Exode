@@ -1,5 +1,7 @@
 //var abc = [0, 1, 50, 100, 110, 130, 150, 180, 200, 190];
 
+var $ = window.jQuery;
+
 let installed = (typeof window.OSMinstalled !== 'undefined' );
 
 const defined = (val) => (typeof val === 'undefined');
@@ -11,8 +13,8 @@ var ExodeEditor = {
 }
 
 // Backgrounds Map ——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-if( ! initialized ) {
-    const backgrounds = {
+if( ! installed ) {
+    window.backgrounds = {
          1: 'https://t4.ftcdn.net/jpg/02/79/57/75/360_F_279577515_yLkfVqafoxKgt4wKPVF8ry0b9rCiPDQD.jpg',
          2: 'https://media.istockphoto.com/vectors/blue-and-gold-abstract-minimal-geometric-background-abstract-hitech-vector-id1276890189?k=6&m=1276890189&s=612x612&w=0&h=ImQH6LP1JwkFSiCczOX6kc2vnFwN-aolxMlgrUzpDlE=',
          3: 'https://static.vecteezy.com/system/resources/previews/002/490/560/non_2x/abstract-dark-blue-luxury-background-with-golden-line-diagonal-free-vector.jpg',
@@ -88,7 +90,7 @@ if( typeof Editor !== 'undefined' ) {
             case 'Exode': $('#insiderenderpanel').css('background', `url("${ExodeEditor.custom_background}")`); break;
             default:
                 ( typeof Editor.custom_background === 'number' )
-                ? $('#insiderenderpanel').css('background', `url("${backgrounds[Editor.custom_background]||''}")`)
+                ? $('#insiderenderpanel').css('background', `url("${window.backgrounds[Editor.custom_background]||''}")`)
                 : $('#insiderenderpanel').css('background', `url("${Editor.custom_background}")`);
                 break;
         };
@@ -429,4 +431,3 @@ if( typeof Editor !== 'undefined' ) {
 
 
 window.OSMinstalled = true
-
