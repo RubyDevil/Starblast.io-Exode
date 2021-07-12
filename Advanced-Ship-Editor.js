@@ -11,7 +11,7 @@ var ExodeEditor = {
 }
 
 // style class
-(function install_ExodeStyleClass() {
+(function /*install Exode Style Class*/() {
     if( $('#exode-style-class') ) return;
     $(`<style id="exode-style-class">
     .exode-var {
@@ -25,7 +25,7 @@ var ExodeEditor = {
 
 
 // Custom Editor Module ——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-(function UpdateEditor() {
+(function /*Update Editor*/() {
     if( typeof Editor !== 'undefined' ) {
         console.log(Editor);
         try {
@@ -46,7 +46,7 @@ var ExodeEditor = {
 
 
 // Exode Variable Module ——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-(function MarkupExode() {
+(function /*Exode Markup*/() {
     let identifiers = $('span.ace_identifier');
     console.log(identifiers);
     for(let identifier of identifiers) {
@@ -69,7 +69,7 @@ var ExodeEditor = {
 
 // editing script above
 
-(function() {
+(function /*Advanced Ship Building Script*/() {
     
     var Cords, a, b, baseModel, dataType, ds, h, isArray, isBody, isObject, isWing, l, ofs, p, pos, sc, t, undef, w, _Array, __save;
 
