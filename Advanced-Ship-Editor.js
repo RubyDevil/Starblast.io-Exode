@@ -1,5 +1,3 @@
-/* eslint-disable no-extend-native, default-case */
-
 //var abc = [0, 1, 50, 100, 110, 130, 150, 180, 200, 190];
 
 let installed = (typeof window.OSMinstalled !== 'undefined' );
