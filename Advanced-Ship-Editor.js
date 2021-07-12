@@ -116,6 +116,7 @@ if( typeof Editor !== 'undefined' ) {
             html {background: none !important;}
             body {background: #212121 !important;}
             .header {color: #E6E6E6;}
+            .iconsbar a, .iconsbar label {background-color: rgba(0,0,0,0.35); background-clip: border-box; border-radius: 10px; border: none;}
             .exode-var {font-style: italic !important; font-weight: bold !important; color: gold !important;}
         </style>`).appendTo('head')
     }
