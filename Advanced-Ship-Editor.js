@@ -98,11 +98,11 @@ if( _defined(Editor) ) {
     if( _defined(Editor.custom_background) && _isNew('custom_background') ) {
         console.log("updated background")
         switch (Editor.custom_background) {
-            case 'Exode': $('#insiderenderpanel').css('background-image', `url("${ExodeEditor.custom_background}") !important`); break;
+            case 'Exode': $('#insiderenderpanel').css('background-image', `url("${ExodeEditor.custom_background}")`); break;
             default:
                 ( typeof Editor.custom_background === 'number' )
-                ? $('#insiderenderpanel').css('background-image', `url("${window.backgrounds[Editor.custom_background]||0}") !important`)
-                : $('#insiderenderpanel').css('background-image', `url("${Editor.custom_background}") !important`);
+                ? $('#insiderenderpanel').css('background-image', `url("${window.backgrounds[Editor.custom_background]||0}")`)
+                : $('#insiderenderpanel').css('background-image', `url("${Editor.custom_background}")`);
                 break;
         };
         _update('custom_background')
