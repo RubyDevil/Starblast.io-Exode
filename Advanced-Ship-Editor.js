@@ -17,7 +17,7 @@ if( typeof Editor !== 'undefined' ) {
         switch (true) {
             case defined(Editor.custom_background): {
                 switch (Editor.custom_background) {
-                    case Exode: $('#insiderenderpanel > canvas').css('background-image', `url("${ExodeEditor.custom_background}) !important`); break;
+                    case Exode: $('#insiderenderpanel > canvas').css('background-image', `url("${ExodeEditor.custom_background}") !important`); break;
                     default: $('#insiderenderpanel > canvas').css('background-image', `url("${Editor.custom_background}") !important`); break;
                 }
             }
@@ -64,7 +64,7 @@ if( typeof Editor !== 'undefined' ) {
 
 (function /*Advanced Ship Building Script*/() {
     
-    if( window.AdancedShipBuildingMethodsInitialized ) return;
+    if( AdancedShipBuildingMethodsInitialized === true ) return;
     
     var Cords, a, b, baseModel, dataType, ds, h, isArray, isBody, isObject, isWing, l, ofs, p, pos, sc, t, undef, w, _Array, __save;
 
@@ -350,7 +350,7 @@ if( typeof Editor !== 'undefined' ) {
     }
     
     // set that the methods have been defined.
-    window.AdancedShipBuildingMethodsInitialized = true;
+    AdancedShipBuildingMethodsInitialized = true;
 
 }).call(this);
 
