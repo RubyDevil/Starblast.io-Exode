@@ -22,6 +22,7 @@ if( typeof Editor !== 'undefined' ) {
     })() : (function(){
         $('#insiderenderpanel').css('background', `url("${Editor.custom_background}")`)
     })();
+    $('#insiderenderpanel').css('background-size','cover');
 }
 
 // ————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
