@@ -19,8 +19,8 @@ var ExodeEditor = {
 // Declare jQuery Functions——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 if( ! installed ) {
     _$.keys = {};
-    $(document).keydown((e) => _$.keys[e.which] = true);
-    $(document).keyup(((e) => delete _$.keys[e.which]);
+    $(document).keydown(e => _$.keys[e.which] = true);
+    $(document).keyup(e => delete _$.keys[e.which]);
 }
 // ——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
