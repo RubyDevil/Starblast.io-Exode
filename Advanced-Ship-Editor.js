@@ -5,7 +5,7 @@ var $ = window.jQuery;
 const defined = (val) => (typeof val === 'undefined');
 
 // default
-var Exode = 'Exode';
+Exode = 'Exode';
 var ExodeEditor = {
     custom_background: "http://backgroundlabs.com/files/dark-canvas-background-2353.png", // dark-grey patern
 }
@@ -17,22 +17,29 @@ $('.exode-var').css({
     'color': 'gold !important',
 })
 
-function customEditor() {
-    switch (true) {
-        case defined(Editor.custom_background): {
-            switch (Editor.custom_background) {
-                case Exode: $('.insiderenderpanel').css('background', `url("${ExodeEditor.custom_background}")`); break;
-                default: $('.insiderenderpanel').css('background', `url("${Editor.custom_background}")`); break;
+
+
+
+if( typeof Editor !== 'undefined' ) {
+    console.log(Editor);
+    try {
+        switch (true) {
+            case defined(Editor.custom_background): {
+                console.log("")
+                switch (Editor.custom_background) {
+                    case Exode: $('.insiderenderpanel').css('background', `url("${ExodeEditor.custom_background}")`); break;
+                    default: $('.insiderenderpanel').css('background', `url("${Editor.custom_background}")`); break;
+                }
             }
         }
-    }
+    } catch (error) {}
 }
-console.log(Editor);
-if( typeof Editor !== 'undefined' ) customEditor();
+
 
 // Exode Variable Module ——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-function Markup() {
+const Markup = () => {
     let identifiers = $('span.ace_identifier');
+    console.log(identifiers);
     for(let identifier of identifiers) {
         if( identifier.innerHTML !== Exode ) continue;
         else if( identifier.classList.contains('exode-var') ) continue;
@@ -40,7 +47,6 @@ function Markup() {
         break;
     }
 }
-document.addEventListener('keydown', Markup());
 // ————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 
