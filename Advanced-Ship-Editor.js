@@ -1,7 +1,5 @@
 //var abc = [0, 1, 50, 100, 110, 130, 150, 180, 200, 190];
 
-var $ = window.jQuery;
-
 const defined = (val) => (typeof val === 'undefined');
 
 // default
