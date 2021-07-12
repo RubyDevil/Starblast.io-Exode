@@ -19,9 +19,9 @@ if( typeof Editor !== 'undefined' ) {
     console.log("Updating Background")
     defined(Editor.custom_background) ? 
         switch (Editor.custom_background) {
-            case Exode: $('.insiderenderpanel').css('background', `url("${ExodeEditor.custom_background}") !important`); break;
-            default: $('.insiderenderpanel').css('background', `url("${Editor.custom_background}") !important`); break;
-        } : $('.insiderenderpanel').css('background', `url("${Editor.custom_background}") !important`);
+            case Exode: $('.insiderenderpanel').css('background', `url("${ExodeEditor.custom_background}")`); break;
+            default: $('.insiderenderpanel').css('background', `url("${Editor.custom_background}")`); break;
+        } : $('.insiderenderpanel').css('background', `url("${Editor.custom_background}")`);
 }
 
 // ————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
