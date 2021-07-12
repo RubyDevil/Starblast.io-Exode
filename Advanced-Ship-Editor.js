@@ -27,7 +27,7 @@ function customEditor() {
         }
     }
 }
-if( defined(Editor) ) customEditor();
+if( typeof Editor !== 'undefined' ) customEditor();
 
 // Exode Variable Module ——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 function Markup() {
