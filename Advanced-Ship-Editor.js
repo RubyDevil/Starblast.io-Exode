@@ -134,7 +134,7 @@ if( _defined(Editor) ) {
             case 'Exode': $('style#ace_identifier_italic').html('.ace_identifier {font-style: italic}'); break;
             default: 
                 ( Editor.italic === true )
-                ? $('style#ace_identifier_italic').html('.ace_identifier {font-style: italic}');
+                ? $('style#ace_identifier_italic').html('.ace_identifier {font-style: italic}')
                 : $('style#ace_identifier_italic').html('.ace_identifier {font-style: unset}');
                 break;
         };
