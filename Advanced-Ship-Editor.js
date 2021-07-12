@@ -169,7 +169,6 @@ if( _defined(Editor) ) {
         if( identifier.innerHTML !== 'Exode' && identifier.innerHTML !== 'Editor' ) continue;
         else if( identifier.classList.contains('exode-var') ) continue;
         identifier.setAttribute('class', 'exode-var');
-        break;
     }
 
 // ————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
