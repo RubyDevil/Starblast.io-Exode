@@ -17,22 +17,40 @@ var ExodeEditor = {
 
 if( typeof Editor !== 'undefined' ) {
     console.log("Updating Background")
-    defined(Editor.custom_background) ? (
+    defined(Editor.custom_background) ? (function(){
         switch (Editor.custom_background) {
             case Exode: $('.insiderenderpanel').css('background', `url("${ExodeEditor.custom_background}")`); break;
             default: $('.insiderenderpanel').css('background', `url("${Editor.custom_background}")`); break;
         }
     ) : ($('.insiderenderpanel').css('background', `url("${Editor.custom_background}")`));
 }
-
+https://fontmeme.com/permalink/210712/c072cd76192d267f5d1729b84c1f1642.png
 // ————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 
 
 // Exode Variable Module ——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-    // style class
+    // DEFAULT - AUTO SETTINGS
     if( ! installed ) {
+    // change logo
+        $('body > div.wrapper > div.header > img').attr('src', 'https://fontmeme.com/permalink/210712/c072cd76192d267f5d1729b84c1f1642.png');
+    // change styles
+        overrideStyle(`
+            
+            body {
+                background-color: #212121 !important;
+            }
+            .exode-var {
+                font-style: italic !important;
+                font-weight: bold !important;
+                color: gold !important;
+            }
+            
+        `)
+        
+        
+        
         function overrideStyle(css) {
             var head, style;
             head = document.getElementsByTagName('head')[0];
@@ -42,16 +60,6 @@ if( typeof Editor !== 'undefined' ) {
             style.innerHTML = css.replace(/;/g, ' !important;');
             head.appendChild(style);
         }
-        overrideStyle(`
-body {
-    background-color: #212121;
-}
-.exode-var {
-    font-style: italic !important;
-    font-weight: bold !important;
-    color: gold !important;
-}
-        `)
     }
     // live searchS
     let identifiers = $('span.ace_identifier');
