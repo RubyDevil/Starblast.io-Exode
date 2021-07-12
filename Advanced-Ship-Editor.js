@@ -1,5 +1,5 @@
 //var abc = [0, 1, 50, 100, 110, 130, 150, 180, 200, 190];
-/*
+
 const defined = (val) => (typeof val === 'undefined');
 
 // default
@@ -47,7 +47,7 @@ function Markup() {
 
 
 
-*/
+
 
 // editing script above
 
