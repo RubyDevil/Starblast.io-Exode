@@ -3,7 +3,7 @@
 var $ = window.jQuery;
 var _$ = window;
 
-if(typeof _$.Styles === 'undefined') _$.Sytles = {};
+if(typeof _$.css === 'undefined') _$.css = {};
 
 let installed = () => (typeof _$.OSMinstalled !== 'undefined' );
 
@@ -13,9 +13,9 @@ const _deprecated  = (data) => (typeof window[data] === 'undefined' || window[da
 const _update = (data) => (window[data] = Editor[data]);
 const _UPDATE = (data) => {
 	var stylesheet = '';
-	if(typeof Object.keys(_$.Styles) !== 'undefined') {
-		for(let element of Object.keys(_$.Styles)) {
-			let css = _$.Styles[element];
+	if(typeof Object.keys(_$.css) !== 'undefined') {
+		for(let element of Object.keys(_$.css)) {
+			let css = _$.css[element];
 			stylesheet += `\t${element} {\n`
 			if(typeof Object.keys(css) === 'undefined') continue;
 			for(let property of Object.keys(css)) {
@@ -45,7 +45,7 @@ if( ! installed() ) {
 // Custom Editor Module ——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 if( ! _undef(Editor) ) {
-	const canvas = _$.Styles['#insiderenderpanel'];
+	const canvas = _$.css['#insiderenderpanel'];
 
     // custom_background
     if( ! _undef(Editor.custom_background) && ! _deprecated('custom_background') ) {
@@ -81,8 +81,8 @@ if( ! _undef(Editor) ) {
             case 'Exode': $('style#ace_identifier_italic').html('.ace_identifier {font-style: italic}'); break;
             default: 
                 ( Editor.italic === true )
-                ? _$.Styles['ace_identifier']['font-style'] = 'italic'
-                : _$.Styles['ace_identifier']['font-style'] = 'unset';
+                ? _$.css['ace_identifier']['font-style'] = 'italic'
+                : _$.css['ace_identifier']['font-style'] = 'unset';
                 break;
         };
         //_update('italic')
