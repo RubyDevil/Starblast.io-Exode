@@ -25,7 +25,7 @@ const _UPDATE = (data) => {
 		};
 	};
 	$('#exode_styles').html(stylesheet)
-	cconsole.log("[Exode Manager]: Updated Syles")
+	console.log("[Exode Manager]: Updated Syles")
 }
 const _not = (expression) => (expression === false);
 
