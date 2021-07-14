@@ -21,10 +21,10 @@ const _UPDATE = (data) => {
 				let configuration = css[property];
 				stylesheet += `\t\t${property}: ${configuration};\n`
 			};
-			stylesheet += `\t}`
+			stylesheet += `\t};`
 		};
 	};
-	$('#exode_styles').html(stylesheet)
+	$('head').append(`<style id="exode_styles">${stylesheet}<style>`)
 	console.log("[Exode Manager]: Updated Syles")
 }
 const _not = (expression) => (expression === false);
