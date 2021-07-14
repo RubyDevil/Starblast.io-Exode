@@ -14,18 +14,28 @@ const _reload = (data) => {
 	var stylesheet = '';
 	if(typeof Object.keys(_$.css) !== 'undefined') {
 		for(let element of Object.keys(_$.css)) {
-			let css = _$.css[element];
-			stylesheet += `\t${element} {\n`
-			if(typeof Object.keys(css) === 'undefined') continue;
-			for(let property of Object.keys(css)) {
-				let configuration = css[property];
-				stylesheet += `\t\t${property}: ${configuration};\n`
-			};
-			stylesheet += `\t};`
+			let rules = _$.css[element];
+			
+			stylesheet += (`
+    ${element} {`)
+			
+			if(typeof Object.keys(rules) === 'undefined') continue;
+			for(let rule of Object.keys(rules)) {
+				let configuration = rules[rule];
+				
+				stylesheet += (`
+        ${rule}: ${configuration};`)
+				
+			}
+			
+			stylesheet += (`
+    };`)
+			
 		};
 	};
+	$('#exode_styles').remove();
 $(`<style id="exode_styles">
-	${stylesheet}
+${stylesheet}
 <style>`).appendTo('head')
 	console.log("[Exode Manager]: Updated Syles")
 }
