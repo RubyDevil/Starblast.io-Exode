@@ -1,161 +1,107 @@
-//var abc = [0, 1, 50, 100, 110, 130, 150, 180, 200, 190];
+/* eslint-disable no-extend-native, no-unused-vars */
 
 var $ = window.jQuery;
 var _$ = window;
 
-let installed = (typeof window.OSMinstalled !== 'undefined' );
+let installed = () => (typeof _$.OSMinstalled !== 'undefined' );
 
 //const _defined = (val) => (typeof val !== 'undefined');
-const _isNew  = (data) => (typeof window[data] === 'undefined' || window[data] !== Editor[data]);
-const _update = (data) => (window[data]  =  Editor[data]);
+var _undef = function (property) { return typeof property === 'undefined' };
+const _deprecated  = (data) => (typeof window[data] === 'undefined' || window[data] !== Editor[data]);
+const _update = (data) => (window[data] = Editor[data]);
+const _UPDATE = (data) => {
+	var stylesheet = '';
+	if(typeof Object.keys(_$.Styles) !== 'undefined') {
+		for(let element of Object.keys(_$.Styles)) {
+			let css = _$.Styles[element];
+			stylesheet += `\t${element} {\n`
+			if(typeof Object.keys(css) === 'undefined') continue;
+			for(let property of Object.keys(css)) {
+				let configuration = css[property];
+				stylesheet += `\t\t${property}: ${configuration};\n`
+			};
+			stylesheet += `\t}`
+		};
+	};
+	$('#exode_styles').html(stylesheet)
+}
+const _not = (expression) => (expression === false);
 
 // Exode Default
 const Exode = 'Exode';
-var ExodeEditor = {
-    custom_background: "https://backgroundlabs.com/files/dark-canvas-background-2353.png", // dark-grey patern
-}
 
 
-// Declare jQuery Functions——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-if( ! installed ) {
-    _$.keys = {};
-    $(document).keydown(e => _$.keys[e.which] = true);
-    $(document).keyup(e => delete _$.keys[e.which]);
-}
-// ——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-
-// Backgrounds Map ——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-if( ! installed ) {
-    window.backgrounds = {
-         1: 'https://t4.ftcdn.net/jpg/02/79/57/75/360_F_279577515_yLkfVqafoxKgt4wKPVF8ry0b9rCiPDQD.jpg',
-         2: 'https://media.istockphoto.com/vectors/blue-and-gold-abstract-minimal-geometric-background-abstract-hitech-vector-id1276890189?k=6&m=1276890189&s=612x612&w=0&h=ImQH6LP1JwkFSiCczOX6kc2vnFwN-aolxMlgrUzpDlE=',
-         3: 'https://static.vecteezy.com/system/resources/previews/002/490/560/non_2x/abstract-dark-blue-luxury-background-with-golden-line-diagonal-free-vector.jpg',
-         4: 'https://i.pinimg.com/736x/e2/86/3f/e2863f9426babeeed49346c570ca9100.jpg',
-         5: 'https://static.vecteezy.com/system/resources/previews/002/011/934/non_2x/paper-cut-luxury-gold-background-with-metal-texture-3d-abstract-for-gift-card-poster-on-wall-poster-template-landing-page-ui-ux-cover-book-banner-free-vector.jpg',
-         6: 'https://static.vecteezy.com/system/resources/thumbnails/002/011/979/small_2x/paper-cut-luxury-gold-background-with-metal-texture-3d-abstract-for-gift-card-poster-on-wall-poster-template-landing-page-ui-ux-cover-book-banner-free-vector.jpg',
-         6: 'https://static.vecteezy.com/system/resources/thumbnails/002/011/923/small_2x/paper-cut-luxury-gold-background-with-metal-texture-3d-abstract-for-gift-card-poster-on-wall-poster-template-landing-page-ui-ux-cover-book-banner-free-vector.jpg',
-         7: 'https://image.freepik.com/free-vector/golden-texture-overlap-layers-dark-background_67845-535.jpg',
-         8: 'https://image.freepik.com/vecteurs-libre/abstrait-bleu-fonce-texture-element-or-design-hexagonal_131186-5.jpg',
-         9: 'https://besthqwallpapers.com/Uploads/4-5-2020/131705/thumb2-gray-abstraction-background-gray-background-with-gold-lines-black-background-luxury-backgrounds.jpg',
-        10: 'https://t4.ftcdn.net/jpg/02/94/31/03/360_F_294310340_U86uCJlDb9jYNWAy8a8iX4t6OTHu3JXN.jpg',
-        11: 'https://image.freepik.com/free-vector/luxury-background-with-golden-details_23-2148385296.jpg',
-        12: 'https://img.freepik.com/vecteurs-libre/style-fond-luxe-or_23-2148639926.jpg?size=626&ext=jpg',
-        13: 'https://image.freepik.com/vecteurs-libre/fond-luxe-or_52683-43998.jpg',
-        14: 'https://img.freepik.com/vecteurs-libre/luxueux-fond-brun-dore-elegant_132724-56.jpg?size=626&ext=jpg&ga=GA1.2.1523869591.1622851200',
-        15: 'https://image.freepik.com/vecteurs-libre/luxueux-fond-brun-dore-elegant_132724-57.jpg',
-        16: 'https://img.freepik.com/vecteurs-libre/luxueux-fond-brun-dore-elegant_132724-58.jpg?size=626&ext=jpg',
-        17: 'https://image.freepik.com/vecteurs-libre/luxueux-fond-brun-dore-elegant_132724-55.jpg',
-        18: 'https://image.freepik.com/vecteurs-libre/fond-ligne-rouge-or-luxe_132724-5.jpg',
-        19: 'https://image.freepik.com/vecteurs-libre/fond-ligne-rouge-or-luxe_132724-4.jpg',
-        20: 'https://image.freepik.com/vecteurs-libre/fond-ligne-rouge-or-luxe_132724-6.jpg',
-        21: 'https://image.freepik.com/vecteurs-libre/fond-ligne-rouge-or-luxe_132724-7.jpg',
-        22: 'https://image.freepik.com/vecteurs-libre/fond-ligne-rouge-or-luxe_132724-8.jpg',
-        23: 'https://image.freepik.com/vecteurs-libre/fond-ligne-rouge-or-luxe_132724-9.jpg',
-        24: 'https://image.freepik.com/vecteurs-libre/fond-ligne-rouge-or-luxe_132724-10.jpg',
-        25: 'https://image.freepik.com/vecteurs-libre/fond-ligne-rouge-or-luxe_132724-15.jpg',
-        26: 'https://image.freepik.com/vecteurs-libre/fond-ligne-rouge-or-luxe_132724-16.jpg',
-        27: 'https://image.freepik.com/vecteurs-libre/fond-ligne-rouge-or-luxe_132724-17.jpg',
-        28: 'https://image.freepik.com/vecteurs-libre/fond-ligne-rouge-or-luxe_132724-18.jpg',
-        29: 'https://image.freepik.com/vecteurs-libre/fond-ligne-rouge-or-luxe_132724-29.jpg',
-        30: 'https://image.freepik.com/vecteurs-libre/fond-ligne-rouge-or-luxe_132724-30.jpg',
-        31: 'https://image.freepik.com/vecteurs-libre/fond-ligne-rouge-or-luxe_132724-31.jpg',
-        32: 'https://image.freepik.com/vecteurs-libre/fond-ligne-rouge-or-luxe_132724-32.jpg',
-        33: 'https://image.freepik.com/vecteurs-libre/fond-ligne-rouge-or-luxe_132724-43.jpg',
-        34: 'https://image.freepik.com/vecteurs-libre/fond-ligne-rouge-or-luxe_132724-44.jpg',
-        35: 'https://image.freepik.com/vecteurs-libre/fond-ligne-rouge-or-luxe_132724-45.jpg',
-        36: 'https://image.freepik.com/vecteurs-libre/fond-ligne-rouge-or-luxe_132724-46.jpg',
-        37: 'https://image.freepik.com/vecteurs-libre/fond-ligne-rouge-or-luxe_132724-47.jpg',
-        38: 'https://image.freepik.com/vecteurs-libre/fond-ligne-rouge-or-luxe_132724-48.jpg',
-        39: 'https://image.freepik.com/vecteurs-libre/fond-ligne-rouge-or-luxe_132724-49.jpg',
-        40: 'https://image.freepik.com/vecteurs-libre/fond-ligne-rouge-or-luxe_132724-50.jpg',
-        41: 'https://image.freepik.com/vecteurs-libre/fond-ligne-rouge-or-luxe_132724-55.jpg',
-        42: 'https://image.freepik.com/vecteurs-libre/fond-ligne-rouge-or-luxe_132724-56.jpg',
-        43: 'https://image.freepik.com/vecteurs-libre/fond-ligne-rouge-or-luxe_132724-57.jpg',
-        44: 'https://image.freepik.com/vecteurs-libre/fond-ligne-rouge-or-luxe_132724-58.jpg',
-        45: 'https://image.freepik.com/vecteurs-libre/fond-ligne-rouge-or-luxe_132724-59.jpg',
-        46: 'https://image.freepik.com/vecteurs-libre/fond-ligne-rouge-or-luxe_132724-60.jpg',
-        47: 'https://image.freepik.com/vecteurs-libre/fond-ligne-rouge-or-luxe_132724-61.jpg',
-        48: 'https://image.freepik.com/vecteurs-libre/fond-ligne-rouge-or-luxe_132724-62.jpg',
-        49: 'https://image.freepik.com/vecteurs-libre/fond-ligne-rouge-or-luxe_132724-63.jpg',
-        50: 'https://image.freepik.com/vecteurs-libre/fond-ligne-rouge-or-luxe_132724-69.jpg',
-        51: 'https://image.freepik.com/vecteurs-libre/fond-ligne-rouge-or-luxe_132724-70.jpg',
-        52: 'https://image.freepik.com/vecteurs-libre/fond-ligne-rouge-or-luxe_132724-71.jpg',
-        53: 'https://image.freepik.com/vecteurs-libre/fond-ligne-rouge-or-luxe_132724-72.jpg',
-        54: 'https://image.freepik.com/vecteurs-libre/fond-ligne-rouge-or-luxe_132724-73.jpg',
-        55: 'https://image.freepik.com/vecteurs-libre/fond-ligne-rouge-or-luxe_132724-75.jpg',
-        56: 'https://image.freepik.com/vecteurs-libre/fond-ligne-rouge-or-luxe_132724-76.jpg',
-        57: 'https://image.freepik.com/vecteurs-libre/fond-ligne-rouge-or-luxe_132724-77.jpg',
-        58: 'https://image.freepik.com/vecteurs-libre/fond-ligne-rouge-or-luxe_132724-80.jpg',
-        59: 'https://static.vecteezy.com/ti/vecteur-libre/p1/2138811-fond-de-luxe-noir-et-or-gratuit-vectoriel.jpg',
-        60: 'https://us.123rf.com/450wm/kundra/kundra1106/kundra110600005/9923368-texture.jpg?ver=6',
-    }
+// Install Exode ——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+if( ! installed() ) {
+	_$.backgrounds = { 1: 'https://t4.ftcdn.net/jpg/02/79/57/75/360_F_279577515_yLkfVqafoxKgt4wKPVF8ry0b9rCiPDQD.jpg', 2: 'https://media.istockphoto.com/vectors/blue-and-gold-abstract-minimal-geometric-background-abstract-hitech-vector-id1276890189?k=6&m=1276890189&s=612x612&w=0&h=ImQH6LP1JwkFSiCczOX6kc2vnFwN-aolxMlgrUzpDlE=', 3: 'https://static.vecteezy.com/system/resources/previews/002/490/560/non_2x/abstract-dark-blue-luxury-background-with-golden-line-diagonal-free-vector.jpg', 4: 'https://i.pinimg.com/736x/e2/86/3f/e2863f9426babeeed49346c570ca9100.jpg', 5: 'https://static.vecteezy.com/system/resources/previews/002/011/934/non_2x/paper-cut-luxury-gold-background-with-metal-texture-3d-abstract-for-gift-card-poster-on-wall-poster-template-landing-page-ui-ux-cover-book-banner-free-vector.jpg', 6: 'https://static.vecteezy.com/system/resources/thumbnails/002/011/979/small_2x/paper-cut-luxury-gold-background-with-metal-texture-3d-abstract-for-gift-card-poster-on-wall-poster-template-landing-page-ui-ux-cover-book-banner-free-vector.jpg', 6: 'https://static.vecteezy.com/system/resources/thumbnails/002/011/923/small_2x/paper-cut-luxury-gold-background-with-metal-texture-3d-abstract-for-gift-card-poster-on-wall-poster-template-landing-page-ui-ux-cover-book-banner-free-vector.jpg', 7: 'https://image.freepik.com/free-vector/golden-texture-overlap-layers-dark-background_67845-535.jpg', 8: 'https://image.freepik.com/vecteurs-libre/abstrait-bleu-fonce-texture-element-or-design-hexagonal_131186-5.jpg', 9: 'https://besthqwallpapers.com/Uploads/4-5-2020/131705/thumb2-gray-abstraction-background-gray-background-with-gold-lines-black-background-luxury-backgrounds.jpg',10: 'https://t4.ftcdn.net/jpg/02/94/31/03/360_F_294310340_U86uCJlDb9jYNWAy8a8iX4t6OTHu3JXN.jpg',11: 'https://image.freepik.com/free-vector/luxury-background-with-golden-details_23-2148385296.jpg',12: 'https://img.freepik.com/vecteurs-libre/style-fond-luxe-or_23-2148639926.jpg?size=626&ext=jpg',13: 'https://image.freepik.com/vecteurs-libre/fond-luxe-or_52683-43998.jpg',14: 'https://img.freepik.com/vecteurs-libre/luxueux-fond-brun-dore-elegant_132724-56.jpg?size=626&ext=jpg&ga=GA1.2.1523869591.1622851200',15: 'https://image.freepik.com/vecteurs-libre/luxueux-fond-brun-dore-elegant_132724-57.jpg',16: 'https://img.freepik.com/vecteurs-libre/luxueux-fond-brun-dore-elegant_132724-58.jpg?size=626&ext=jpg',17: 'https://image.freepik.com/vecteurs-libre/luxueux-fond-brun-dore-elegant_132724-55.jpg',18: 'https://image.freepik.com/vecteurs-libre/fond-ligne-rouge-or-luxe_132724-5.jpg',19: 'https://image.freepik.com/vecteurs-libre/fond-ligne-rouge-or-luxe_132724-4.jpg',20: 'https://image.freepik.com/vecteurs-libre/fond-ligne-rouge-or-luxe_132724-6.jpg',21: 'https://image.freepik.com/vecteurs-libre/fond-ligne-rouge-or-luxe_132724-55.jpg',22: 'https://image.freepik.com/vecteurs-libre/fond-ligne-rouge-or-luxe_132724-56.jpg',23: 'https://image.freepik.com/vecteurs-libre/fond-ligne-rouge-or-luxe_132724-57.jpg',24: 'https://image.freepik.com/vecteurs-libre/fond-ligne-rouge-or-luxe_132724-58.jpg',25: 'https://image.freepik.com/vecteurs-libre/fond-ligne-rouge-or-luxe_132724-59.jpg',26: 'https://image.freepik.com/vecteurs-libre/fond-ligne-rouge-or-luxe_132724-60.jpg',27: 'https://image.freepik.com/vecteurs-libre/fond-ligne-rouge-or-luxe_132724-61.jpg',28: 'https://image.freepik.com/vecteurs-libre/fond-ligne-rouge-or-luxe_132724-62.jpg',29: 'https://image.freepik.com/vecteurs-libre/fond-ligne-rouge-or-luxe_132724-63.jpg',30: 'https://image.freepik.com/vecteurs-libre/fond-ligne-rouge-or-luxe_132724-69.jpg',31: 'https://image.freepik.com/vecteurs-libre/fond-ligne-rouge-or-luxe_132724-70.jpg',32: 'https://image.freepik.com/vecteurs-libre/fond-ligne-rouge-or-luxe_132724-71.jpg',33: 'https://image.freepik.com/vecteurs-libre/fond-ligne-rouge-or-luxe_132724-72.jpg',34: 'https://image.freepik.com/vecteurs-libre/fond-ligne-rouge-or-luxe_132724-73.jpg',35: 'https://image.freepik.com/vecteurs-libre/fond-ligne-rouge-or-luxe_132724-75.jpg',36: 'https://image.freepik.com/vecteurs-libre/fond-ligne-rouge-or-luxe_132724-76.jpg',37: 'https://image.freepik.com/vecteurs-libre/fond-ligne-rouge-or-luxe_132724-77.jpg',38: 'https://image.freepik.com/vecteurs-libre/fond-ligne-rouge-or-luxe_132724-80.jpg',39: 'https://static.vecteezy.com/ti/vecteur-libre/p1/2138811-fond-de-luxe-noir-et-or-gratuit-vectoriel.jpg',40: 'https://us.123rf.com/450wm/kundra/kundra1106/kundra110600005/9923368-texture.jpg?ver=6', }
+    $('<style id="exode_styles"></style>').appendTo('head') // create CSS style class file
 }
 // ————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 
-
 // Custom Editor Module ——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-if( ! installed ) {
-    //$('<style id="ace_identifier"></style>').appendTo('head')// create identifier style class file
-    $('<style id="ace_identifier_color"></style>').appendTo('head')// create identifier color style class file
-    $('<style id="ace_identifier_italic"></style>').appendTo('head')// create identifier italic style class file
-}
+if( ! _undef(Editor) ) {
+	const canvas = _$.Styles['#insiderenderpanel'];
 
-if( typeof Editor !== 'undefined' ) {
     // custom_background
-    if( typeof Editor.custom_background !== 'undefined' && _isNew('custom_background') ) {
-        if( ! _$.background_deleted ) {
-            $('#insiderenderpanel').css('background-color','unset'); // unset current background-color
-            $('#insiderenderpanel').css('background-image','unset'); // unset current background-image
-            $('#insiderenderpanel').css('background-size','cover'); // set background to cover
-            $('#insiderenderpanel').css('background-position','center'); // set background position to center
-            _$.background_deleted = true;
-        }
-        switch (Editor.custom_background) {
-            case 'Exode': $('#insiderenderpanel').css('background-image', `url("${ExodeEditor.custom_background}")`); break;
+    if( ! _undef(Editor.custom_background) && ! _deprecated('custom_background') ) {
+		let custom_background = Editor.custom_background
+		if( ! _$.background_deleted ) { canvas.css('background-color','unset'); /* unset current background-color */ canvas.css('background-image','unset'); /* unset current background-image */ canvas.css('background-size','cover'); /* set background to cover */ canvas.css('background-position','center'); /* set background position to center */ _$.background_deleted = true; }
+        switch (custom_background) {
+            case 'Exode': canvas['background-image'] = `url("${ExodeEditor.custom_background}")`; break;
             default:
-                ( typeof Editor.custom_background === 'number' )
-                ? $('#insiderenderpanel').css('background-image', `url("${window.backgrounds[Editor.custom_background]||0}")`)
-                : $('#insiderenderpanel').css('background-image', `url("${Editor.custom_background}")`);
+				canvas['background-image'] = 
+				( typeof custom_background === 'number' )
+                ? `url("${window.backgrounds[custom_background]||0}")`
+                : `url("${custom_background}")`;
                 break;
-        };
-        _update('custom_background')
+		};
+        //_update('custom_background')
+		_UPDATE()
     }
-    //else if( ! isdefined(Editor.custom_background)) { $('#insiderenderpanel').css('background', `url("${ExodeEditor.custom_background}")`); }
-    // text_color
-    if( typeof Editor.text_color !== 'undefined' && _isNew('text_color') ) {
+	
+	// text_color
+    if( ! _undef(Editor.text_color) && _deprecated('text_color') ) {
+		let text_color = Editor.text_color
         switch (Editor.text_color) {
             case 'Exode': $('style#ace_identifier_color').html('.ace_identifier {color: greenyellow}'); break;
             default: $('style#ace_identifier_color').html(`.ace_identifier {color: ${Editor.text_color}}`); break;
         };
-        _update('text_color')
+        //_update('text_color')
+		_UPDATE()
     }
-    // italic
-    if( typeof Editor.italic !== 'undefined' && _isNew('italic') ) {
+	
+	// italic
+    if( ! _undef(Editor.italic) && _deprecated('italic') ) {
         switch (Editor.italic) {
             case 'Exode': $('style#ace_identifier_italic').html('.ace_identifier {font-style: italic}'); break;
             default: 
                 ( Editor.italic === true )
-                ? $('style#ace_identifier_italic').html('.ace_identifier {font-style: italic}')
-                : $('style#ace_identifier_italic').html('.ace_identifier {font-style: unset}');
+                ? _$.Styles['ace_identifier']['font-style'] = 'italic'
+                : _$.Styles['ace_identifier']['font-style'] = 'unset';
                 break;
         };
-        _update('italic')
+        //_update('italic')
+		_UPDATE()
     }
-    // centerize_canvas  
-    if( typeof Editor.centerize_canvas !== 'undefined' && _isNew('centerize_canvas') ) {
-        switch (Editor.centerize_canvas) {
-            case 'Exode': $('#insiderenderpanel > canvas').css({ 'width':'unset', 'height':'100%' }) ; break;
-            default: 
-                ( Editor.centerize_canvas === true )
-                ? $('#insiderenderpanel > canvas').css({ 'width':'unset', 'height':'100%' }) 
-                : $('#insiderenderpanel > canvas').css({ 'width':'100%', 'height':'unset' });
+	
+	// centerize_canvas
+    if( ! _undef(Editor.centerize_canvas) && _deprecated('centerize_canvas') ) {
+		const { centerize_canvas } = Editor;
+        switch (centerize_canvas) {
+			case 'Exode': { canvas['width'] = 'unset'; canvas['height'] = '100%'; break; }
+			default: 
+				if(centerize_canvas === true) { canvas['width'] = 'unset'; canvas['height'] = '100%' }
+				else { canvas['width'] = '100%'; canvas['height'] = 'unset' }
                 break;
         };
-        _update('centerize_canvas')
-    }
+		//_update('centerize_canvas')
+		_UPDATE()
+	}
+	
+
+	//_UPDATE()
 }
 
 // ————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -165,12 +111,12 @@ if( typeof Editor !== 'undefined' ) {
 // Exode Styles Module ——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
     // DEFAULT - STYLES
-    if( ! installed ) {
+    if( ! installed() ) {
         // change logo
         $('body > div.wrapper > div.header > img')
         .attr('src', 'https://fontmeme.com/permalink/210712/c072cd76192d267f5d1729b84c1f1642.png');
         // change css styles
-        $(`<style id="exode-stylesheet">
+        $(`<style id="exode-default-styles">
             html {background: none !important;}
             body {background: #212121 !important;}
             .header {color: #E6E6E6;}
@@ -202,9 +148,9 @@ if( typeof Editor !== 'undefined' ) {
 
 (function /*Advanced Ship Building Script*/() {
     
-    if( installed ) return;
+    if( installed() ) return;
     
-    var Cords, a, b, baseModel, dataType, ds, h, isArray, isBody, isObject, isWing, l, ofs, p, pos, sc, t, undef, w, _Array, __save;
+    var Cords, a, b, baseModel, dataType, ds, h, isArray, isBody, isObject, isWing, l, ofs, p, pos, sc, t, _undef, w, _Array, __save;
 
     pos = 'position';
     w = 'width';
@@ -243,7 +189,7 @@ if( typeof Editor !== 'undefined' ) {
 
     __save = new Map();
 
-    undef = function (property) {
+    _undef = function (property) {
         return typeof property === 'undefined';
     };
 
@@ -283,7 +229,7 @@ if( typeof Editor !== 'undefined' ) {
 
     Object.prototype.autoComplete = Object.prototype.auto = function () {
         var key, val, _i, _j, _len, _len1, _ref, _results;
-        if (undef(this[ofs])) {
+        if (_undef(this[ofs])) {
             this[ofs] = {
                 x: 0,
                 y: 0,
@@ -292,27 +238,27 @@ if( typeof Editor !== 'undefined' ) {
         } else {
             for (_i = 0, _len = Cords.length; _i < _len; _i++) {
                 key = Cords[_i];
-                if (undef(this[ofs][key]) || !this[ofs][key]) {
+                if (_undef(this[ofs][key]) || !this[ofs][key]) {
                     this[ofs][key] = 0;
                 }
             }
             return this;
         }
-        if (undef(this[pos])) {
+        if (_undef(this[pos])) {
             this[pos] = {
                 x: _Array,
                 y: _Array,
                 z: _Array
             };
         } else {
-            if (undef(this[pos][key]) || !this[pos][key]) {
+            if (_undef(this[pos][key]) || !this[pos][key]) {
                 for (_j = 0, _len1 = Cords.length; _j < _len1; _j++) {
                     key = Cords[_j];
                     this[pos][key] = _Array;
                 }
             }
         }
-        if (undef(this[key]) || !this[key]) {
+        if (_undef(this[key]) || !this[key]) {
             _ref = baseModel[dataType(this)];
             _results = [];
             for (key in _ref) {
@@ -461,7 +407,12 @@ if( typeof Editor !== 'undefined' ) {
 
     Array.prototype.paste = function(ID) {
         return __save.get(ID);
-    };
+	};
+	
+
+	String.prototype.important = function() {
+		return this + " !important"
+	}
 
 
 
@@ -476,8 +427,15 @@ if( typeof Editor !== 'undefined' ) {
             enumerable: false
         })
     }
+    
+    for(let key of Object.keys(String.prototype)) {
+        Object.defineProperty(String.prototype, key, {
+            enumerable: false
+        })
+    }
 
 }).call(this);
 
 
-window.OSMinstalled = true
+_$.OSMinstalled = true
+
