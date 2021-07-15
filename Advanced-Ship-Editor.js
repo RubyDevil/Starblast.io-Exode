@@ -61,20 +61,21 @@ if( ! _undef(Editor) ) {
     // custom_background
     if( ! _undef(Editor.custom_background) && ! _deprecated('custom_background') ) {
 		let custom_background = Editor.custom_background
-		if( ! _$.background_deleted ) {
-			_$.css['#insiderenderpanel']['background-color'] = 'unset'; /* unset current background-color */
-			_$.css['#insiderenderpanel']['background-image'] = 'unset'; /* unset current background-image */
-			_$.css['#insiderenderpanel']['background-size'] = 'cover'; /* set background to cover */
-			_$.css['#insiderenderpanel']['background-position'] = 'center'; /* set background position to center */
+		let _this = '#insiderenderpanel';
+		if( _undef(_$.background_deleted) ) {
+			_$.css[_this]['background-color'] = 'unset'; /* unset current background-color */
+			_$.css[_this]['background-image'] = 'unset'; /* unset current background-image */
+			_$.css[_this]['background-size'] = 'cover'; /* set background to cover */
+			_$.css[_this]['background-position'] = 'center'; /* set background position to center */
 			_$.background_deleted = true;
 		}
         switch (custom_background) {
             case 'Exode': _$.css['#insiderenderpanel']['background-image'] = `url("${ExodeEditor.custom_background}")`; break;
             default:
-				_$.css['#insiderenderpanel']['background-image'] = 
+				_$.css[_this]['background-image'] = 
 				( typeof custom_background === 'number' )
-                ? `url("${window.backgrounds[custom_background]||0}")`
-                : `url("${custom_background}")`;
+                ? `url("${window.backgrounds[custom_background]||)}") !important`
+                : `url("${custom_background}") !important`;
                 break;
 		};
         _update('custom_background')
@@ -85,9 +86,10 @@ if( ! _undef(Editor) ) {
     if( ! _undef(Editor.text_color) && _deprecated('text_color') ) {
 		_check4('.ace_identifier')
 		let text_color = Editor.text_color
+		let _this = '.ace_identifier';
         switch (Editor.text_color) {
-            case 'Exode': _$.css['.ace_identifier']['color'] = 'GreenYellow'; break;
-            default: _$.css['.ace_identifier']['color'] = text_color; break;
+            case 'Exode': _$.css[_this]['color'] = 'GreenYellow'; break;
+            default: _$.css[_this]['color'] = text_color; break;
         };
         _update('text_color')
 		_reload()
@@ -96,12 +98,13 @@ if( ! _undef(Editor) ) {
 	// italic
     if( ! _undef(Editor.italic) && _deprecated('italic') ) {
 		_check4('.ace_identifier')
+		let _this = '.ace_identifier';
         switch (Editor.italic) {
-            case 'Exode': _$.css['.ace_identifier']['font-style'] = 'italic !important'; break;
+            case 'Exode': _$.css[_this]['font-style'] = 'italic !important'; break;
             default: 
                 ( Editor.italic === true )
-                ? _$.css['.ace_identifier']['font-style'] = 'italic !important'
-                : _$.css['.ace_identifier']['font-style'] = 'unset';
+                ? _$.css[_this]['font-style'] = 'italic !important'
+                : _$.css[_this]['font-style'] = 'unset';
                 break;
         };
         _update('italic')
@@ -110,13 +113,23 @@ if( ! _undef(Editor) ) {
 	
 	// centerize_canvas
     if( ! _undef(Editor.centerize_canvas) && _deprecated('centerize_canvas') ) {
-		_check4('#insiderenderpanel')
+		_check4('.insiderenderpanel canvas')
 		let centerize_canvas = Editor.centerize_canvas;
+		let _this = '.insiderenderpanel canvas';
         switch (centerize_canvas) {
-			case 'Exode': { _$.css['#insiderenderpanel']['width'] = 'unset'; _$.css['#insiderenderpanel']['height'] = '100%'; break; }
+			case 'Exode':
+				_$.css[_this]['width'] = 'unset';
+				_$.css[_this]['height'] = '100%';
+				break;
 			default: 
-				if(centerize_canvas === true) { _$.css['#insiderenderpanel']['width'] = 'unset'; _$.css['#insiderenderpanel']['height'] = '100%' }
-				else { _$.css['#insiderenderpanel']['width'] = '100%'; _$.css['#insiderenderpanel']['height'] = 'unset' }
+				if(centerize_canvas === true) {
+					_$.css[_this]['width'] = 'unset';
+					_$.css[_this]['height'] = '100%'
+				}
+				else {
+					_$.css[_this]['width'] = '100%';
+					_$.css[_this]['height'] = 'unset'
+				}
                 break;
         };
 		_update('centerize_canvas')
