@@ -1,4 +1,3 @@
-/* eslint-disable no-extend-native, no-unused-vars */
 
 var $ = window.jQuery;
 var _$ = window;
