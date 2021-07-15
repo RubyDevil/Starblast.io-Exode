@@ -46,7 +46,25 @@ Editor = {
 ```
 
 
-## Prototype Extend
-```markdown
-# Litterally making the docs => [Right Now] <=, ready soon.
+## Array Methods
+The following methods are extended to **Array.prototype**, and can be used like the example below.
+```js
+[1,2,3,4].add(2) // => [3,4,5,6]
 ```
+| Method          | Description                                                      |
+|-----------------|------------------------------------------------------------------|
+| `.add(x)`       | **Augment** each number in the array by `x` (negatives = reduce) |
+| `.mult(x)`      | **Multiply** each number in the array by `x`                     |
+| `.div(x)`       | **Divide** each number in the array by `x`                       |
+| `.min(x)`       | Set the **minimal** value of each number in the array            |
+| `.max(x)`       | Set the **maximal** value of each number in the array            |
+| `.flat()`       | **(width or height)** Flatten the object to a 2D plane           |
+| `.ignore([x])`  | Ignore all given values and set them to 0 (`x` is Array)         |
+| `.replace(x,y)` | Replace all given values `x` by the value `y`                    |
+| `.cleanTex()`   | Prevent all Textures `0` from rendering as a different Texture   |
+| `.baseTex(Tex)` | Force all Textures `0` to render as Texture `Tex`                |
+| `.step(s)`      | Details Comming soon                                             |
+| `.fill(v,l)`    | Details Comming soon                                             |
+| `.copy(ID)`     | `@save_system` create a save `ID` of the array                   |
+| `.paste(ID)`    | `@save_system` load the save `ID` of an array                    |
+
