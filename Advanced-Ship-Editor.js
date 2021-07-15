@@ -1,3 +1,4 @@
+/* eslint-disable no-extend-native, no-unused-vars */
 
 var $ = window.jQuery;
 var _$ = window;
@@ -166,7 +167,7 @@ if( ! _undef(Editor) ) {
 
 
 
-// editing script above
+// editing script below
 
 (function /*Advanced Ship Building Script*/() {
     
@@ -238,6 +239,45 @@ if( ! _undef(Editor) ) {
     isWing = function (obj) {
         return dataType(obj) === 'wing';
     };
+
+    Object.prototype.scale = function (ratio) {
+        if( ! _undef(this.offset) ) {
+            this.offset.x = (_undef(this.offset.x))
+            ? undefined : (this.offset.x * ratio);
+            this.offset.y = (_undef(this.offset.y))
+            ? undefined : (this.offset.y * ratio);
+            this.offset.z = (_undef(this.offset.z))
+            ? undefined : (this.offset.z * ratio);
+        }
+        this.width = (_undef(this.width))
+        ? undefined : (this.width * ratio);
+        if(isBody(this)) {
+            if( ! _undef(this.position) ) {
+                this.position.x = (_undef(this.position.x))
+                ? undefined : (this.position.x * ratio);
+                this.position.y = (_undef(this.position.y))
+                ? undefined : (this.position.y * ratio);
+                this.position.z = (_undef(this.position.z))
+                ? undefined : (this.position.z * ratio);
+            }
+            this.height = (_undef(this.height))
+            ? undefined : (this.height * ratio);
+        }
+        else if(isWing(this)) {
+            if( ! _undef(this.bump) ) {
+                this.bump.position = (_undef(this.bump.position))
+                ? undefined : (this.bump.position * ratio);
+                this.bump.size = (_undef(this.bump.size))
+                ? undefined : (this.bump.size * ratio);
+            }
+            this['length'] = (_undef(this['length']))
+            ? undefined : (this['length'] * ratio);
+            this.angle = (_undef(this.angle))
+            ? undefined : (this.angle * ratio);
+            this.position = (_undef(this.position))
+            ? undefined : (this.position * ratio);
+        }
+    }
 
     Object.prototype.revert = Object.prototype.reflect = function () {
         var key, val, _results;
@@ -460,4 +500,3 @@ if( ! _undef(Editor) ) {
 
 
 _$.OSMinstalled = true
-
