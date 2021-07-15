@@ -17,26 +17,26 @@ const _reload = (data) => {
 			let rules = _$.css[element];
 			
 			stylesheet += (`
-    ${element} {`)
+${element} {`)
 			
 			if(typeof Object.keys(rules) === 'undefined') continue;
 			for(let rule of Object.keys(rules)) {
 				let configuration = rules[rule];
 				
 				stylesheet += (`
-        ${rule}: ${configuration};`)
+    ${rule}: ${configuration};`)
 				
 			}
 			
 			stylesheet += (`
-    };`)
+}`)
 			
-		};
-	};
-	$('#exode_styles').remove();
+		}
+	}
+	$('#exode-styles').remove();
 $(`<style id="exode-styles">
 ${stylesheet}
-<style>`).appendTo('head')
+</style>`).appendTo('head')
 	console.log("[Exode Manager]: Updated Syles")
 }
 const _not = (expression) => (expression === false);
