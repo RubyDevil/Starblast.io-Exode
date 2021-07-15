@@ -5,6 +5,14 @@ Note: Exode is currently in .Beta and can sometimes be in maintenance. #DailyUpd
 ```css
 @Status: .custom_background unoperative and being fixed
 ```
+```Ruby
+@AuthorStatus: Coding.
+@Tasks:
+    Array_Methods_Docs: Current
+    Fix_custom_background: Next
+    Continue_Class_System: Pending
+```
+
 
 To install the Exode Tool, paste the code line below at the **top** of your code
 
