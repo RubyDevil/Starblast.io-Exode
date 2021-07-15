@@ -1,9 +1,5 @@
 (function () {
 
-    const _$ = window;
-
-    if( typeof _$.PrototypeExtend !== 'undefined' ) return;
-
     var Cords, a, b, baseModel, dataType, ds, h, isArray, isBody, isObject, isWing, l, ofs, p, pos, sc, t, _undef, w, _Array, __save;
 
     pos = 'position';
@@ -327,7 +323,5 @@
             enumerable: false
         })
     }
-
-    _$.PrototypeExtend = true
 
 }).call(this);
