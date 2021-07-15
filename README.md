@@ -1,9 +1,9 @@
 ![Exode](https://fontmeme.com/permalink/210712/c072cd76192d267f5d1729b84c1f1642.png)
 ```css
-@Status: .custom_background unoperative and being fixed
+Note: Exode is currently in .Beta and can sometimes be in maintenance. #DailyUpdates @Unstable
 ```
 ```css
-Note: Exode is currently in .Beta and can sometimes be in maintenance. #DailyUpdates @Unstable
+@Status: .custom_background unoperative and being fixed
 ```
 
 To install the Exode Tool, paste the code line below at the **top** of your code
