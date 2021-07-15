@@ -6,7 +6,7 @@ Note: Exode is currently in .Beta and can sometimes be in maintenance. #DailyUpd
 @Status: .custom_background unoperative and being fixed
 ```
 ```Ruby
-@AuthorStatus: Coding.
+@AuthorStatus: On a short break.
 @Tasks:
     Array_Methods_Docs: @done
     Fix_custom_background: Current
