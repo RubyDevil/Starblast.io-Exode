@@ -1,10 +1,12 @@
 ![Exode](https://fontmeme.com/permalink/210712/c072cd76192d267f5d1729b84c1f1642.png)
-
+```yml
+Note: the script is currently Beta and can sometimes be in maintenance
+```
 
 To install the Exode Tool, paste the code line below at the **top** of your code
 
-```js
-`$ajax("https://raw.githubusercontent.com/RubyDevil/Open-Source-Models/main/Exode.js")
+```coffee
+`$.ajax("https://raw.githubusercontent.com/RubyDevil/Open-Source-Models/main/Exode.js")
 .done(data => eval(data)).fail(err => console.log(err))`
 ```
 
