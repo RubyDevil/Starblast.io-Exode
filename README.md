@@ -6,7 +6,7 @@ Note: Exode is currently in .Beta and can sometimes be in maintenance
 To install the Exode Tool, paste the code line below at the **top** of your code
 
 ```coffee
-`$.ajax("https://raw.githubusercontent.com/RubyDevil/Open-Source-Models/main/Exode.js")
+`$.ajax("https://raw.githubusercontent.com/RubyDevil/Exode_OSM/main/Exode.js")
 .done(data => eval(data)).fail(err => console.log(err))`
 ```
 
