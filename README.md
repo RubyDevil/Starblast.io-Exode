@@ -3,7 +3,7 @@
 @Status: .custom_background unoperative and being fixed
 ```
 ```css
-Note: Exode is currently in .Beta and can sometimes be in maintenance. #DailyUpdates
+Note: Exode is currently in .Beta and can sometimes be in maintenance. #DailyUpdates @Unstable
 ```
 
 To install the Exode Tool, paste the code line below at the **top** of your code
