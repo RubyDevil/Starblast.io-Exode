@@ -40,5 +40,5 @@ Editor = {
 
 ## Prototype Extend
 ```markdown
-# Litterally making the docs => **Right Now** <=, ready soon.
+# Litterally making the docs => [Right Now] <=, ready soon.
 ```
