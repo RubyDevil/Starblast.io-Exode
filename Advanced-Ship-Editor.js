@@ -403,11 +403,11 @@ if( ! _undef(Editor) ) {
         if(isBody(this)) {
             if( ! _undef(this.position) ) {
                 _object.position.x = (_undef(this.position.x))
-                ? undefined : (this.position.x * ratio);
+                ? undefined : (this.position.x.mult(ratio));
                 _object.position.y = (_undef(this.position.y))
-                ? undefined : (this.position.y * ratio);
+                ? undefined : (this.position.y.mult(ratio));
                 _object.position.z = (_undef(this.position.z))
-                ? undefined : (this.position.z * ratio);
+                ? undefined : (this.position.z.mult(ratio));
             }
             _object.height = (_undef(this.height))
             ? undefined : (this.height.mult(ratio));
