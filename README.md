@@ -18,9 +18,10 @@ Editor = {
 }
 ```
 
-| Setting | Description | Options |
-|---------|-------------|---------|
-| custom_background |
+| Setting           | Description                                   | Options                       |
+|-------------------|-----------------------------------------------|-------------------------------|
+| custom_background | Alter the background of the main canvas       | ```URL``` **\|** ```[1-40]``` |
+| centerize_canvas  | Avoid the canvas from exceeding window limits | ```True``` **\|** ```false``` |
 
 
 ```yml
