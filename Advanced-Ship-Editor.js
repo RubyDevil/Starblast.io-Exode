@@ -7,6 +7,9 @@ let installed = () => (typeof _$.OSMinstalled !== 'undefined' );
 
 //const _defined = (val) => (typeof val !== 'undefined');
 var _undef = function (property) { return typeof property === 'undefined' };
+const _deprecated  = (data) => (typeof window[data] === 'undefined' || window[data] !== Editor[data]);
+const _update = (data) => (window[data] = Editor[data]);
+const _check4 = (element) => { if(_undef(_$.css[element])) _$.css[element] = {} };
 function _reload(data) {
 	var stylesheet = '';
 	if(typeof Object.keys(_$.css) !== 'undefined') {
@@ -53,18 +56,14 @@ if( ! installed() ) {
 
 // Custom Editor Module ——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-if( typeof Editor !== 'undefined' ) {
-	
-	const _deprecated  = (data) => (typeof window[data] === 'undefined' || window[data] !== Editor[data]);
-	const _update = (data) => (window[data] = Editor[data]);
-	const _check4 = (element) => { if(_undef(_$.css[element])) _$.css[element] = {} };
-	
+if( ! _undef(Editor) ) {
+
     // custom_background
     if( ! _undef(Editor.custom_background) && ! _deprecated('custom_background') ) {
         _check4('#insiderenderpanel');
 		let custom_background = Editor.custom_background
 		let _this = '#insiderenderpanel';
-		if( ! _$.background_deleted ) {
+		if( _undef(_$.background_deleted) ) {
 			_$.css[_this]['background-color'] = 'unset'; /* unset current background-color */
 			_$.css[_this]['background-image'] = 'unset'; /* unset current background-image */
 			_$.css[_this]['background-size'] = 'cover'; /* set background to cover */
@@ -255,6 +254,7 @@ if( typeof Editor !== 'undefined' ) {
         return dataType(obj) === 'wing';
     };
 
+/*
     Object.prototype.scale = function (ratio) {
         if( ! _undef(this.offset) ) {
             this.offset.x = (_undef(this.offset.x))
@@ -292,7 +292,9 @@ if( typeof Editor !== 'undefined' ) {
             this.position = (_undef(this.position))
             ? undefined : (this.position * ratio);
         }
+        return this;
     }
+*/
 
     Object.prototype.revert = Object.prototype.reflect = function () {
         var key, val, _results;
