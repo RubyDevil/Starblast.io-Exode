@@ -8,9 +8,9 @@ Note: Exode is currently in .Beta and can sometimes be in maintenance. #DailyUpd
 ```Ruby
 @AuthorStatus: Coding.
 @Tasks:
-    Array_Methods_Docs: Current
-    Fix_custom_background: Next
-    Continue_Class_System: Pending
+    Array_Methods_Docs: @done
+    Fix_custom_background: Current
+    Continue_Class_System: Mext
 ```
 
 
