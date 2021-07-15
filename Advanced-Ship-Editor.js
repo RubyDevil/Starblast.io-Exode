@@ -185,8 +185,6 @@ if( ! _undef(Editor) ) {
 
 (function /*Advanced Ship Building Script*/() {
     
-    if( installed() ) return;
-    
     var Cords, a, b, baseModel, dataType, ds, h, isArray, isBody, isObject, isWing, l, ofs, p, pos, sc, t, _undef, w, _Array, __save;
 
     pos = 'position';
@@ -254,110 +252,6 @@ if( ! _undef(Editor) ) {
         return dataType(obj) === 'wing';
     };
 
-/*
-    Object.prototype.scale = function (ratio) {
-        if( ! _undef(this.offset) ) {
-            this.offset.x = (_undef(this.offset.x))
-            ? undefined : (this.offset.x * ratio);
-            this.offset.y = (_undef(this.offset.y))
-            ? undefined : (this.offset.y * ratio);
-            this.offset.z = (_undef(this.offset.z))
-            ? undefined : (this.offset.z * ratio);
-        }
-        this.width = (_undef(this.width))
-        ? undefined : (this.width * ratio);
-        if(isBody(this)) {
-            if( ! _undef(this.position) ) {
-                this.position.x = (_undef(this.position.x))
-                ? undefined : (this.position.x * ratio);
-                this.position.y = (_undef(this.position.y))
-                ? undefined : (this.position.y * ratio);
-                this.position.z = (_undef(this.position.z))
-                ? undefined : (this.position.z * ratio);
-            }
-            this.height = (_undef(this.height))
-            ? undefined : (this.height * ratio);
-        }
-        else if(isWing(this)) {
-            if( ! _undef(this.bump) ) {
-                this.bump.position = (_undef(this.bump.position))
-                ? undefined : (this.bump.position * ratio);
-                this.bump.size = (_undef(this.bump.size))
-                ? undefined : (this.bump.size * ratio);
-            }
-            this['length'] = (_undef(this['length']))
-            ? undefined : (this['length'] * ratio);
-            this.angle = (_undef(this.angle))
-            ? undefined : (this.angle * ratio);
-            this.position = (_undef(this.position))
-            ? undefined : (this.position * ratio);
-        }
-        return this;
-    }
-*/
-
-    Object.prototype.revert = Object.prototype.reflect = function () {
-        var key, val, _results;
-        _results = [];
-        for (key in this) {
-            val = this[key];
-            _results.push(isObject(val) ? (isArray(val) ? (this[key] = val.reverse()) : key === 'position' ? ((this[key].x = this[key].x.reverse()), (this[key].y = this[key].y.swipe().reverse()), (this[key].z = this[key].z.reverse())) : void 0) : void 0);
-        }
-        return _results;
-    };
-
-    Object.prototype.autoComplete = Object.prototype.auto = function () {
-        var key, val, _i, _j, _len, _len1, _ref, _results;
-        if (_undef(this[ofs])) {
-            this[ofs] = {
-                x: 0,
-                y: 0,
-                z: 0
-            };
-        } else {
-            for (_i = 0, _len = Cords.length; _i < _len; _i++) {
-                key = Cords[_i];
-                if (_undef(this[ofs][key]) || !this[ofs][key]) {
-                    this[ofs][key] = 0;
-                }
-            }
-            return this;
-        }
-        if (_undef(this[pos])) {
-            this[pos] = {
-                x: _Array,
-                y: _Array,
-                z: _Array
-            };
-        } else {
-            if (_undef(this[pos][key]) || !this[pos][key]) {
-                for (_j = 0, _len1 = Cords.length; _j < _len1; _j++) {
-                    key = Cords[_j];
-                    this[pos][key] = _Array;
-                }
-            }
-        }
-        if (_undef(this[key]) || !this[key]) {
-            _ref = baseModel[dataType(this)];
-            _results = [];
-            for (key in _ref) {
-                val = _ref[key];
-                _results.push((this[key] = val));
-            }
-            return _results;
-        }
-    };
-
-    Object.prototype.loadModel = Object.prototype.loadObj = function (model) {
-        var key, val;
-        for (key in model) {
-            val = model[key];
-            if (!this[key]) {
-                this[key] = val;
-            }
-        }
-        return this;
-    };
 
     Array.prototype.swipe = function () {
         return this.map(function (val) {
@@ -493,6 +387,108 @@ if( ! _undef(Editor) ) {
 		return this + " !important"
 	}
 
+
+    Object.prototype.scale = function (ratio) {
+        var _object = this;
+        if( ! _undef(this.offset) ) {
+            _object.offset.x = (_undef(this.offset.x))
+            ? undefined : (this.offset.x * ratio);
+            _object.offset.y = (_undef(this.offset.y))
+            ? undefined : (this.offset.y * ratio);
+            _object.offset.z = (_undef(this.offset.z))
+            ? undefined : (this.offset.z * ratio);
+        }
+        _object.width = (_undef(this.width))
+        ? undefined : (this.width.mult(ratio));
+        if(isBody(this)) {
+            if( ! _undef(this.position) ) {
+                _object.position.x = (_undef(this.position.x))
+                ? undefined : (this.position.x * ratio);
+                _object.position.y = (_undef(this.position.y))
+                ? undefined : (this.position.y * ratio);
+                _object.position.z = (_undef(this.position.z))
+                ? undefined : (this.position.z * ratio);
+            }
+            _object.height = (_undef(this.height))
+            ? undefined : (this.height.mult(ratio));
+        }
+        else if(isWing(this)) {
+            if( ! _undef(this.bump) ) {
+                _object.bump.position = (_undef(this.bump.position))
+                ? undefined : (this.bump.position * ratio);
+                _object.bump.size = (_undef(this.bump.size))
+                ? undefined : (this.bump.size * ratio);
+            }
+            _object.angle = (_undef(this.angle))
+            ? undefined : (this.angle.mult(ratio));
+            _object.position = (_undef(this.position))
+            ? undefined : (this.position.mult(ratio));
+        }
+        return _object;
+    }
+
+    Object.prototype.revert = Object.prototype.reflect = function () {
+        var key, val, _results;
+        _results = [];
+        for (key in this) {
+            val = this[key];
+            _results.push(isObject(val) ? (isArray(val) ? (this[key] = val.reverse()) : key === 'position' ? ((this[key].x = this[key].x.reverse()), (this[key].y = this[key].y.swipe().reverse()), (this[key].z = this[key].z.reverse())) : void 0) : void 0);
+        }
+        return _results;
+    };
+
+    Object.prototype.autoComplete = Object.prototype.auto = function () {
+        var key, val, _i, _j, _len, _len1, _ref, _results;
+        if (_undef(this[ofs])) {
+            this[ofs] = {
+                x: 0,
+                y: 0,
+                z: 0
+            };
+        } else {
+            for (_i = 0, _len = Cords.length; _i < _len; _i++) {
+                key = Cords[_i];
+                if (_undef(this[ofs][key]) || !this[ofs][key]) {
+                    this[ofs][key] = 0;
+                }
+            }
+            return this;
+        }
+        if (_undef(this[pos])) {
+            this[pos] = {
+                x: _Array,
+                y: _Array,
+                z: _Array
+            };
+        } else {
+            if (_undef(this[pos][key]) || !this[pos][key]) {
+                for (_j = 0, _len1 = Cords.length; _j < _len1; _j++) {
+                    key = Cords[_j];
+                    this[pos][key] = _Array;
+                }
+            }
+        }
+        if (_undef(this[key]) || !this[key]) {
+            _ref = baseModel[dataType(this)];
+            _results = [];
+            for (key in _ref) {
+                val = _ref[key];
+                _results.push((this[key] = val));
+            }
+            return _results;
+        }
+    };
+
+    Object.prototype.loadModel = Object.prototype.loadObj = function (model) {
+        var key, val;
+        for (key in model) {
+            val = model[key];
+            if (!this[key]) {
+                this[key] = val;
+            }
+        }
+        return this;
+    };
 
 
     for(let key of Array.prototype) {
