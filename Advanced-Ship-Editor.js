@@ -57,15 +57,20 @@ if( ! installed() ) {
 
 if( ! _undef(Editor) ) {
 	_check4('#insiderenderpanel');
-	const canvas = _$.css['#insiderenderpanel'];
     // custom_background
     if( ! _undef(Editor.custom_background) && ! _deprecated('custom_background') ) {
 		let custom_background = Editor.custom_background
-		if( ! _$.background_deleted ) { canvas['background-color'] = 'unset'; /* unset current background-color */ canvas['background-image'] = 'unset'; /* unset current background-image */ canvas['background-size'] = 'cover'; /* set background to cover */ canvas['background-position'] = 'center'; /* set background position to center */ _$.background_deleted = true; }
+		if( ! _$.background_deleted ) {
+			_$.css['#insiderenderpanel']['background-color'] = 'unset'; /* unset current background-color */
+			_$.css['#insiderenderpanel']['background-image'] = 'unset'; /* unset current background-image */
+			_$.css['#insiderenderpanel']['background-size'] = 'cover'; /* set background to cover */
+			_$.css['#insiderenderpanel']['background-position'] = 'center'; /* set background position to center */
+			_$.background_deleted = true;
+		}
         switch (custom_background) {
-            case 'Exode': canvas['background-image'] = `url("${ExodeEditor.custom_background}")`; break;
+            case 'Exode': _$.css['#insiderenderpanel']['background-image'] = `url("${ExodeEditor.custom_background}")`; break;
             default:
-				canvas['background-image'] = 
+				_$.css['#insiderenderpanel']['background-image'] = 
 				( typeof custom_background === 'number' )
                 ? `url("${window.backgrounds[custom_background]||0}")`
                 : `url("${custom_background}")`;
@@ -104,13 +109,13 @@ if( ! _undef(Editor) ) {
 	
 	// centerize_canvas
     if( ! _undef(Editor.centerize_canvas) && _deprecated('centerize_canvas') ) {
-		_check4('centerize_canvas')
+		_check4('#insiderenderpanel')
 		let centerize_canvas = Editor.centerize_canvas;
         switch (centerize_canvas) {
-			case 'Exode': { canvas['width'] = 'unset'; canvas['height'] = '100%'; break; }
+			case 'Exode': { _$.css['#insiderenderpanel']['width'] = 'unset'; _$.css['#insiderenderpanel']['height'] = '100%'; break; }
 			default: 
-				if(centerize_canvas === true) { canvas['width'] = 'unset'; canvas['height'] = '100%' }
-				else { canvas['width'] = '100%'; canvas['height'] = 'unset' }
+				if(centerize_canvas === true) { _$.css['#insiderenderpanel']['width'] = 'unset'; _$.css['#insiderenderpanel']['height'] = '100%' }
+				else { _$.css['#insiderenderpanel']['width'] = '100%'; _$.css['#insiderenderpanel']['height'] = 'unset' }
                 break;
         };
 		_update('centerize_canvas')
