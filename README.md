@@ -28,6 +28,6 @@ Editor = {
 | italic            | Set the **main** text style to italic         | ```True``` **\|** ```false```                                              |
 
 
-```yml
-! Copyright
+```markdown
+# Copyright
 ```
