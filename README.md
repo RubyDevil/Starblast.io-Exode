@@ -31,7 +31,14 @@ Editor = {
 | italic            | Set the **main** text style to italic         | ```True``` **\|** ```false```                                              |
 
 
+
 ## Open Source Models
 ```markdown
 # In progress...
+```
+
+
+## Prototype Extend
+```markdown
+# Litterally making the docs __Right Now__, ready soon.
 ```
