@@ -7,9 +7,6 @@ let installed = () => (typeof _$.OSMinstalled !== 'undefined' );
 
 //const _defined = (val) => (typeof val !== 'undefined');
 var _undef = function (property) { return typeof property === 'undefined' };
-const _deprecated  = (data) => (typeof window[data] === 'undefined' || window[data] !== Editor[data]);
-const _update = (data) => (window[data] = Editor[data]);
-const _check4 = (element) => { if(_undef(_$.css[element])) _$.css[element] = {} };
 function _reload(data) {
 	var stylesheet = '';
 	if(typeof Object.keys(_$.css) !== 'undefined') {
@@ -56,14 +53,18 @@ if( ! installed() ) {
 
 // Custom Editor Module ——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-if( ! _undef(Editor) ) {
-
+if( typeof Editor !== 'undefined' ) {
+	
+	const _deprecated  = (data) => (typeof window[data] === 'undefined' || window[data] !== Editor[data]);
+	const _update = (data) => (window[data] = Editor[data]);
+	const _check4 = (element) => { if(_undef(_$.css[element])) _$.css[element] = {} };
+	
     // custom_background
     if( ! _undef(Editor.custom_background) && ! _deprecated('custom_background') ) {
         _check4('#insiderenderpanel');
 		let custom_background = Editor.custom_background
 		let _this = '#insiderenderpanel';
-		if( _undef(_$.background_deleted) ) {
+		if( ! _$.background_deleted ) {
 			_$.css[_this]['background-color'] = 'unset'; /* unset current background-color */
 			_$.css[_this]['background-image'] = 'unset'; /* unset current background-image */
 			_$.css[_this]['background-size'] = 'cover'; /* set background to cover */
