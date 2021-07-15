@@ -31,6 +31,7 @@ Editor = {
 | italic            | Set the **main** text style to italic         | ```True``` **\|** ```false```                                              |
 
 
+## Open Source Models
 ```markdown
-# Copyright
+# In progress...
 ```
