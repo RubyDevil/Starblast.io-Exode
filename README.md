@@ -1,6 +1,6 @@
 ![Exode](https://fontmeme.com/permalink/210712/c072cd76192d267f5d1729b84c1f1642.png)
-```yml
-Note: the script is currently Beta and can sometimes be in maintenance
+```css
+Note: Exode is currently in .Beta and can sometimes be in maintenance
 ```
 
 To install the Exode Tool, paste the code line below at the **top** of your code
