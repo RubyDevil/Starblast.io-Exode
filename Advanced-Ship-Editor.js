@@ -10,7 +10,7 @@ var _undef = function (property) { return typeof property === 'undefined' };
 const _deprecated  = (data) => (typeof window[data] === 'undefined' || window[data] !== Editor[data]);
 const _update = (data) => (window[data] = Editor[data]);
 const _check4 = (element) => { if(_undef(_$.css[element])) _$.css[element] = {} };
-const _reload = (data) => {
+function _reload(data) {
 	var stylesheet = '';
 	if(typeof Object.keys(_$.css) !== 'undefined') {
 		for(let element of Object.keys(_$.css)) {
@@ -33,10 +33,10 @@ ${element} {`)
 			
 		}
 	}
-	$('#exode-styles').remove();
-$(`<style id="exode-styles">
-${stylesheet}
-</style>`).appendTo('head')
+	$('#exode-styles').html(stylesheet);
+//$(`<style id="exode-styles">
+//${stylesheet}
+//</style>`).appendTo('head')
 	console.log("[Exode Manager]: Updated Syles")
 }
 const _not = (expression) => (expression === false);
