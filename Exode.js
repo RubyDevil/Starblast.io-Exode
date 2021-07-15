@@ -65,7 +65,7 @@ if( _undef(_$.OpenSourceModels) ) {
 
 // Custom Editor Module ——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-if( ! _undef(Editor) ) {
+if( typeof Editor !== 'undefined' ) {
 
     const _deprecated  = (data) => (typeof window[data] === 'undefined' || window[data] !== Editor[data]);
     const _update = (data) => (window[data] = Editor[data]);
