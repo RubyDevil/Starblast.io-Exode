@@ -44,7 +44,7 @@ if( ! installed() ) {
 // Install Plugins ——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 /** @Prototype_Extend **/
 if( _undef(_$.PrototypeExtend) ) {
-//    (function () {
+    (function () {
 
 		const pos = 'position';
 		const w = 'width';
@@ -308,7 +308,7 @@ if( _undef(_$.PrototypeExtend) ) {
 			return this;
 		};
 		
-        Object.prototype.scale = function (size = 1) {
+        Object.prototype.resize = function (size = 1) {
             var k = ['texture','section_segments','propeller','angle'];
             for (let key in this) {
                 let val = this[key];
@@ -351,7 +351,7 @@ if( _undef(_$.PrototypeExtend) ) {
 			})
 		}
 
-//	}).call(this);
+	}).call(this);
 }
 /** @Open_Source_Models **/
 if( _undef(_$.OpenSourceModels) ) {
