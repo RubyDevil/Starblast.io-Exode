@@ -202,7 +202,7 @@
 		return this + " !important"
 	}
 
-
+/*
     Object.prototype.scale = function (ratio) {
         var _object = this;
         if( ! _undef(this.offset) ) {
@@ -241,6 +241,7 @@
         }
         return _object;
     }
+*/
 
     Object.prototype.revert = Object.prototype.reflect = function () {
         var key, val, _results;
