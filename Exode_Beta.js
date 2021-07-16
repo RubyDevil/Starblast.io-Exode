@@ -339,13 +339,13 @@ if( _undef(_$.PrototypeExtend) ) {
 			})
 		}
 
-		for(let key of Object.keys(Object.prototype)) {
+		for(let key in Object.prototype) {
 			Object.defineProperty(Object.prototype, key, {
 				enumerable: false
 			})
 		}
 
-		for(let key of Object.keys(String.prototype)) {
+		for(let key in String.prototype) {
 			Object.defineProperty(String.prototype, key, {
 				enumerable: false
 			})
