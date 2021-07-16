@@ -4,6 +4,8 @@ Note: Exode is currently in .Beta and can sometimes be in maintenance. #DailyUpd
 ```
 ```css
 @Status: .custom_background unoperative and being fixed
+         .auto() unoperative and being fixed
+         .revert() unoperative and being fixed
 ```
 
 
@@ -17,7 +19,7 @@ To install the Exode Tool, paste the code line below at the **top** of your code
 # Features
 
 ## Custom Editor
-Exode allows you to customize your interface as you like. To perform modifications to the style of your editor, follow the example, and use options in the table below
+Exode allows you to customize your interface as you like. To perform modifications to the style of your editor, follow the example, and use options in the table below.
 ```
 Editor = {
     option: value
