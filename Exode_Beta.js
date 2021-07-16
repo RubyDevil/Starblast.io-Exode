@@ -309,7 +309,6 @@ if( _undef(_$.PrototypeExtend) ) {
 		};
 		
 		Object.prototype.scale = function (ratio) {
-			var this = this;
 			if( ! _undef(this.offset) ) {
 				this.offset.x = (_undef(this.offset.x))
 				? undefined : (this.offset.x * ratio);
