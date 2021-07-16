@@ -202,46 +202,29 @@
 		return this + " !important"
 	}
 
-/*
-    Object.prototype.scale = function (ratio) {
-        var _object = this;
-        if( ! _undef(this.offset) ) {
-            _object.offset.x = (_undef(this.offset.x))
-            ? undefined : (this.offset.x * ratio);
-            _object.offset.y = (_undef(this.offset.y))
-            ? undefined : (this.offset.y * ratio);
-            _object.offset.z = (_undef(this.offset.z))
-            ? undefined : (this.offset.z * ratio);
-        }
-        _object.width = (_undef(this.width))
-        ? undefined : (this.width.mult(ratio));
-        if(isBody(this)) {
-            if( ! _undef(this.position) ) {
-                _object.position.x = (_undef(this.position.x))
-                ? undefined : (this.position.x.mult(ratio));
-                _object.position.y = (_undef(this.position.y))
-                ? undefined : (this.position.y.mult(ratio));
-                _object.position.z = (_undef(this.position.z))
-                ? undefined : (this.position.z.mult(ratio));
-            }
-            _object.height = (_undef(this.height))
-            ? undefined : (this.height.mult(ratio));
-        }
-        else if(isWing(this)) {
-            if( ! _undef(this.bump) ) {
-                _object.bump.position = (_undef(this.bump.position))
-                ? undefined : (this.bump.position * ratio);
-                _object.bump.size = (_undef(this.bump.size))
-                ? undefined : (this.bump.size * ratio);
-            }
-            _object.angle = (_undef(this.angle))
-            ? undefined : (this.angle.mult(ratio));
-            _object.position = (_undef(this.position))
-            ? undefined : (this.position.mult(ratio));
-        }
-        return _object;
-    }
-*/
+	Object.prototype.resize = function (size = 1) {
+		var k = ['texture','section_segments','propeller','angle'];
+		for (let key in this) {
+			let val = this[key];
+			if(typeof val == 'boolean' || typeof val == 'number') continue;
+			typeof val == 'object' && Array.isArray(val) 
+			? (k.includes(key)
+				? void 0 
+				: this[key] = val.mult(size)) 
+			: void 0;
+			typeof val == 'object' && !Array.isArray(val) ? (() => {
+				for (let _key in val) {
+					let _val = val[_key];
+					this[key][_key] = typeof _val == 'number' 
+					? _val * size 
+					: typeof _val == 'object' && Array.isArray(_val) 
+						? _val.mult(size) 
+						: _val;
+				}
+			})() : void 0;
+		};
+		return this;
+	}
 
     Object.prototype.revert = Object.prototype.reflect = function () {
         var key, val, _results;
