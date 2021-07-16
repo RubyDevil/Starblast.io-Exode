@@ -226,17 +226,24 @@
 		return this;
 	}
 
-    Object.prototype.revert = Object.prototype.reflect = function () {
-        var key, val, _results;
-        _results = [];
-        for (key in this) {
-            val = this[key];
-            _results.push(isObject(val) ? (isArray(val) ? (this[key] = val.reverse()) : key === 'position' ? ((this[key].x = this[key].x.reverse()), (this[key].y = this[key].y.swipe().reverse()), (this[key].z = this[key].z.reverse())) : void 0) : void 0);
-        }
-        return _results;
-    };
-
-    Object.prototype.autoComplete = Object.prototype.auto = function () {
+	Object.prototype.reflect = function () {
+		for (let key in this) {
+			let val = this[key];
+			typeof val == 'object' 
+			? (Array.isArray(val) 
+				? (this[key] = val.reverse()) 
+				: key === 'position' 
+					? (
+						(this[key].x = val.x.reverse()), 
+						(this[key].y = val.y.swipe().reverse()), 
+						(this[key].z = val.z.reverse())
+					) : void 0) 
+			: void 0;
+		}
+		return this;
+	};
+/*
+    Object.prototype.auto = function () {
         var key, val, _i, _j, _len, _len1, _ref, _results;
         if (_undef(this[ofs])) {
             this[ofs] = {
@@ -277,18 +284,7 @@
             return _results;
         }
     };
-
-    Object.prototype.loadModel = Object.prototype.loadObj = function (model) {
-        var key, val;
-        for (key in model) {
-            val = model[key];
-            if (!this[key]) {
-                this[key] = val;
-            }
-        }
-        return this;
-    };
-
+*/
 
     for(let key of Array.prototype) {
         Object.defineProperty(Array.prototype, key, {
