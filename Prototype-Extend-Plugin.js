@@ -242,44 +242,6 @@
         return _object;
     }
 */
-	
-	Object.prototype.scale = function (ratio) {
-        if( ! _undef(this.offset) ) {
-            this.offset.x = (_undef(this.offset.x))
-            ? undefined : (this.offset.x * ratio);
-            this.offset.y = (_undef(this.offset.y))
-            ? undefined : (this.offset.y * ratio);
-            this.offset.z = (_undef(this.offset.z))
-            ? undefined : (this.offset.z * ratio);
-        }
-        this.width = (_undef(this.width))
-        ? undefined : (this.width.mult(ratio));
-        if(isBody(this)) {
-            if( ! _undef(this.position) ) {
-                this.position.x = (_undef(this.position.x))
-                ? undefined : (this.position.x.mult(ratio));
-                this.position.y = (_undef(this.position.y))
-                ? undefined : (this.position.y.mult(ratio));
-                this.position.z = (_undef(this.position.z))
-                ? undefined : (this.position.z.mult(ratio));
-            }
-            this.height = (_undef(this.height))
-            ? undefined : (this.height.mult(ratio));
-        }
-        else if(isWing(this)) {
-            if( ! _undef(this.bump) ) {
-                this.bump.position = (_undef(this.bump.position))
-                ? undefined : (this.bump.position * ratio);
-                this.bump.size = (_undef(this.bump.size))
-                ? undefined : (this.bump.size * ratio);
-            }
-            this.angle = (_undef(this.angle))
-            ? undefined : (this.angle.mult(ratio));
-            this.position = (_undef(this.position))
-            ? undefined : (this.position.mult(ratio));
-        }
-        return this;
-    }
 
     Object.prototype.revert = Object.prototype.reflect = function () {
         var key, val, _results;
