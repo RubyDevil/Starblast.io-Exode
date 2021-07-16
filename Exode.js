@@ -3,9 +3,9 @@
 var $ = window.jQuery;
 var _$ = window;
 
-const installed = () => ( typeof _$.OSMinstalled !== 'undefined' );
+const installed = function () { return typeof _$.OSMinstalled !== 'undefined' };
 
-const _undef = (property) => ( typeof property === 'undefined' );
+const _undef = function (property) { return typeof property === 'undefined' };
 
 const ExodeLog = (info) => { console.log(`[Exode Manager]: ${info}`) };
 
