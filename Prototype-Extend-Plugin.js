@@ -202,7 +202,7 @@
 		return this + " !important"
 	}
 
-	Object.prototype.size = function (size = 1) {
+	Object.prototype.resize = function (size = 1) {
 		var k = ['texture','section_segments','propeller','angle'];
 		for (let key in this) {
 			let val = this[key];
