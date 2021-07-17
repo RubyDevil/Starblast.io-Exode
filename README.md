@@ -63,3 +63,14 @@ The following methods are extended to **Array.prototype**, and can be used like 
 | `.copy(ID)`     | `@save_system` create a save `ID` of the array                   |
 | `.paste(ID)`    | `@save_system` load the save `ID` of an array                    |
 
+
+## Object Methods
+
+
+
+| Method     | Description                                                                         |
+|------------|-------------------------------------------------------------------------------------|
+| .reflect() | Reflects/Reverses the object                                                        |
+| .size(x)   | Scales the object to the given size `x`                                             |
+| .auto()    | Bypasses the necessity of declaring properties <br /> (e.g. You can have the `offset` property with only `y` and without `x` and `z`) <br /> The script will generate the properties you omit |
+
