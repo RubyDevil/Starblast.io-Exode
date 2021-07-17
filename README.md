@@ -59,7 +59,7 @@ The following methods are extended to **Array.prototype**, and can be used like 
 | `.cleanTex()`   | Prevent all Textures `0` from rendering as a different Texture   |
 | `.baseTex(Tex)` | Force all Textures `0` to render as Texture `Tex`                |
 | `.step(s)`      | Details Comming soon                                             |
-| `.fill(v,l)`    | Details Comming soon                                             |
+| `.infuse(v,l)`  | Details Comming soon                                             |
 | `.copy(ID)`     | `@save_system` create a save `ID` of the array                   |
 | `.paste(ID)`    | `@save_system` load the save `ID` of an array                    |
 
