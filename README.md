@@ -65,9 +65,13 @@ The following methods are extended to **Array.prototype**, and can be used like 
 
 
 ## Object Methods
-
-
-
+The following methods are extended to **Object.prototype**, and can be used like the example below.
+```js
+bodies:
+  main:{
+    ...
+  }.size(1.5)
+```
 | Method     | Description                                                                         |
 |------------|-------------------------------------------------------------------------------------|
 | .reflect() | Reflects/Reverses the object                                                        |
