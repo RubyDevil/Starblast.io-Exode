@@ -78,6 +78,6 @@ bodies:
 | Method       | Description                                                                         |
 |--------------|-------------------------------------------------------------------------------------|
 | `.reflect()` | Reflects/Reverses the object                                                        |
-| `.size(x)`   | Scales the object to the given size `x`                                             |
+| `.resize(x)` | Scales the object to the given size `x`                                             |
 | `.auto()`    | Bypasses the necessity of declaring properties <br /> (e.g. You can have the `offset` property with only `y` and without `x` and `z`) <br /> The script will generate the properties you omit |
 
