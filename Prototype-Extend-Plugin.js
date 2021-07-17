@@ -169,7 +169,7 @@
         return _results;
     };
 
-    Array.prototype.fill = function(val, len) {
+    Array.prototype.infuse = function(val, len) {
         var i, _i, _j, _k, _len, _ref, _ref1, _results, _results1, _results2;
         _ref1 = (len ? (function() {
             _results1 = [];
