@@ -66,15 +66,18 @@ The following methods are extended to **Array.prototype**, and can be used like 
 
 ## Object Methods
 The following methods are extended to **Object.prototype**, and can be used like the example below.
+```json
+{ Brackets } need to be added to use Object Methods
+```
 ```js
 bodies:
   main:{
     ...
   }.size(1.5)
 ```
-| Method     | Description                                                                         |
-|------------|-------------------------------------------------------------------------------------|
-| .reflect() | Reflects/Reverses the object                                                        |
-| .size(x)   | Scales the object to the given size `x`                                             |
-| .auto()    | Bypasses the necessity of declaring properties <br /> (e.g. You can have the `offset` property with only `y` and without `x` and `z`) <br /> The script will generate the properties you omit |
+| Method       | Description                                                                         |
+|--------------|-------------------------------------------------------------------------------------|
+| `.reflect()` | Reflects/Reverses the object                                                        |
+| `.size(x)`   | Scales the object to the given size `x`                                             |
+| `.auto()`    | Bypasses the necessity of declaring properties <br /> (e.g. You can have the `offset` property with only `y` and without `x` and `z`) <br /> The script will generate the properties you omit |
 
