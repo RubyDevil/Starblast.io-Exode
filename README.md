@@ -3,9 +3,7 @@
 Note: Exode is currently in .Beta and can sometimes be in maintenance. #DailyUpdates @Unstable
 ```
 ```css
-@Status: .custom_background unoperative and being fixed
-         .auto() unoperative and being fixed
-         { ship part }.reflect() working but unlisted
+@Status: .custom_background unoperative
 ```
 
 
