@@ -1,3 +1,7 @@
+```diff
+DEPRECATED: NO UPDATE WILL BE MADE IN THE FUTURE
+```
+
 ![Exode](https://fontmeme.com/permalink/210712/c072cd76192d267f5d1729b84c1f1642.png)
 ```css
 Note: Exode is currently in .Beta and can sometimes be in maintenance. @Unstable
