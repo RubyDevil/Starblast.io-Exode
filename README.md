@@ -1,6 +1,6 @@
 ![Exode](https://fontmeme.com/permalink/210712/c072cd76192d267f5d1729b84c1f1642.png)
 ```css
-Note: Exode is currently in .Beta and can sometimes be in maintenance. #DailyUpdates @Unstable
+Note: Exode is currently in .Beta and can sometimes be in maintenance. #Unstable
 ```
 ```css
 @Status: .custom_background unoperative
